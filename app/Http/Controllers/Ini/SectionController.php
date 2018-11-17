@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Ini;
 
+use App\Models\IniType;
 use App\Models\IniSection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,30 +12,34 @@ class SectionController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IniType $iniType)
     {
-        //
+        $iniSections = $iniType->sections;
+        return view('ini.sections.index', compact('iniType', 'iniSections'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(IniType $iniType)
     {
-        //
+        return view('ini.sections.form', compact('iniType'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IniType $iniType, Request $request)
     {
         //
     }
@@ -45,7 +50,7 @@ class SectionController extends Controller
      * @param  \App\IniSection  $iniSection
      * @return \Illuminate\Http\Response
      */
-    public function show(IniSection $iniSection)
+    public function show(IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -56,7 +61,7 @@ class SectionController extends Controller
      * @param  \App\IniSection  $iniSection
      * @return \Illuminate\Http\Response
      */
-    public function edit(IniSection $iniSection)
+    public function edit(IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -68,7 +73,7 @@ class SectionController extends Controller
      * @param  \App\IniSection  $iniSection
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IniSection $iniSection)
+    public function update(Request $request, IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -79,7 +84,7 @@ class SectionController extends Controller
      * @param  \App\IniSection  $iniSection
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IniSection $iniSection)
+    public function destroy(IniType $iniType, IniSection $iniSection)
     {
         //
     }

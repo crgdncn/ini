@@ -15,7 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        dd(__METHOD__);
+        $iniTypes = IniType::all();
+        return view('ini.index', compact('iniTypes'));
     }
 
     /**

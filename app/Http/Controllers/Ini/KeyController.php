@@ -13,7 +13,7 @@ class KeyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -23,7 +23,7 @@ class KeyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -32,9 +32,11 @@ class KeyController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\IniType $iniType
+     * @param  \App\Models\IniSection $iniSection
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, IniType $iniType, IniSection $iniSection)
     {
         //
     }
@@ -42,10 +44,12 @@ class KeyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\IniKey  $iniKey
+     * @param  \App\Models\IniType $iniType
+     * @param  \App\Models\IniSection $iniSection
+     * @param  \App\Models\IniKey  $iniKey
      * @return \Illuminate\Http\Response
      */
-    public function show(IniKey $iniKey)
+    public function show(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
     {
         //
     }
@@ -53,10 +57,12 @@ class KeyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\IniKey  $iniKey
+     * @param  \App\Models\IniType $iniType
+     * @param  \App\Models\IniSection $iniSection
+     * @param  \App\Models\IniKey  $iniKey
      * @return \Illuminate\Http\Response
      */
-    public function edit(IniKey $iniKey)
+    public function edit(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
     {
         //
     }
@@ -65,10 +71,12 @@ class KeyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\IniKey  $iniKey
+     * @param  \App\Models\IniType $iniType
+     * @param  \App\Models\IniSection $iniSection
+     * @param  \App\Models\IniKey  $iniKey
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IniKey $iniKey)
+    public function update(Request $request, IniType $iniType, IniSection $iniSection, IniKey $iniKey)
     {
         //
     }
@@ -76,10 +84,12 @@ class KeyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\IniKey  $iniKey
+     * @param  \App\Models\IniType $iniType
+     * @param  \App\Models\IniSection $iniSection
+     * @param  \App\Models\IniKey  $iniKey
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IniKey $iniKey)
+    public function destroy(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
     {
         //
     }
