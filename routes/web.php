@@ -19,6 +19,11 @@ Route::get('/', function () {
  * Define INI types, sections and keys
  */
 Route::prefix('ini')->name('ini.')->group(function () {
+
+    // @TODO we need to break these out in hierarchies
+    // /ini/types,
+    // /ini/types/{$iniType}/sections,
+    // /ini/types/{$iniType}/sections/{IniSection}/keys
     Route::resources([
         'types' => 'Ini\TypeController',
         'sections' => 'Ini\SectionController',
