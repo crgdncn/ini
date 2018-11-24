@@ -11,17 +11,7 @@ class SectionController extends Controller
 {
     public function all()
     {
-        // $all = IniType::orderBy(' `name', 'asc')
-        //     ->with('sections', function ($query) {
-        //         $query->orderBy('name', 'asc');
-        //     })
-        //     ->get();
-        $all = IniType::orderBy('name', 'asc')
-            ->with(['sections' => function ($query) {
-                $query->orderBy('name', 'asc');
-            }])
-            ->get();
-
+        $all = IniType::orderBy('name', 'asc')->with('sections')->get();
         return view('ini.sections.all', compact('all'));
     }
 

@@ -10,7 +10,7 @@
         <div class="sidenav">
             <a href="{{route('ini.types.index')}}">Types</a>
             <a href="{{route('ini.sections.all')}}">Sections</a>
-            <a href="{route('ini.keys.all')}}">Keys</a>
+            <a href="{{route('ini.keys.all')}}">Keys</a>
         </div>
         <div class="main">
             @yield('content')
