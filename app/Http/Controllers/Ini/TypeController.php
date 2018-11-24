@@ -15,8 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $iniTypes = IniType::all();
-        return view('ini.index', compact('iniTypes'));
+        $iniTypes = IniType::get();
+        return view('ini.types.index', compact('iniTypes'));
     }
 
     /**
@@ -24,9 +24,17 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        dd(__METHOD__);
+        $iniType = new IniType();
+
+        if ($request->ajax()) {
+            $render = view('ini.types.create', compact('iniType'))->render();
+            return e($render);
+        } else {
+            // abort(404);
+            return view('ini.types.create', compact('iniType'));
+        }
     }
 
     /**
@@ -37,7 +45,14 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        dd(__METHOD__);
+
+        $request->validate([
+            'name' => 'required|unique:ini_types|max:32',
+            'description' => 'required',
+        ]);
+
+        $iniType = IniType::create($request->all());
+        return redirect(route('ini.types.index'));
     }
 
     /**
@@ -46,9 +61,10 @@ class TypeController extends Controller
      * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function show(IniType $iniType)
+    public function show(IniType $type)
     {
-        dd(__METHOD__);
+        dd($type);
+        //abort(404);
     }
 
     /**
@@ -57,9 +73,16 @@ class TypeController extends Controller
      * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function edit(IniType $iniType)
+    public function edit(IniType $type)
     {
-        dd(__METHOD__);
+
+        $iniType = $type;
+
+        if (!$iniType->id) {
+            //abort(404);
+        }
+
+        return view('ini.types.edit', compact('iniType'));
     }
 
     /**
@@ -69,9 +92,16 @@ class TypeController extends Controller
      * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IniType $iniType)
+    public function update(Request $request, IniType $type)
     {
-        dd(__METHOD__);
+        $request->validate([
+            'name' => 'required|unique:ini_types|max:32',
+            'description' => 'required',
+        ]);
+
+        $type->update($request->all());
+
+        return redirect(route('ini.types.index'));
     }
 
     /**
@@ -80,7 +110,7 @@ class TypeController extends Controller
      * @param  \App\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IniType $iniType)
+    public function destroy(IniType $type)
     {
         dd(__METHOD__);
     }

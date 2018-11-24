@@ -3,11 +3,36 @@
 namespace App\Http\Controllers\Ini;
 
 use App\Models\IniKey;
+use App\Models\IniType;
+use App\Models\IniSection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class KeyController extends Controller
 {
+    public function all()
+    {
+        $all = IniType::orderBy('name', 'asc')
+            ->with(['sections' => function ($query) {
+                $query->orderBy('name', 'asc')
+                    ->with(['keys' => function ($query) {
+                        $query->orderBy('name', 'asc');
+                    }]);
+            }])
+            ->get();
+
+
+            // dd(IniType::orderBy('name', 'asc')
+            // ->with(['sections' => function ($query) {
+            //     $query->orderBy('name', 'asc')
+            //         ->with(['keys' => function ($query) {
+            //             $query->orderBy('name', 'asc');
+            //         }]);
+            // }])->toSql());
+
+        return view('ini.keys.all', compact('all'));
+    }
+
     /**
      * Display a listing of the resource.
      *

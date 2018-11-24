@@ -9,6 +9,22 @@ use App\Http\Controllers\Controller;
 
 class SectionController extends Controller
 {
+    public function all()
+    {
+        // $all = IniType::orderBy(' `name', 'asc')
+        //     ->with('sections', function ($query) {
+        //         $query->orderBy('name', 'asc');
+        //     })
+        //     ->get();
+        $all = IniType::orderBy('name', 'asc')
+            ->with(['sections' => function ($query) {
+                $query->orderBy('name', 'asc');
+            }])
+            ->get();
+
+        return view('ini.sections.all', compact('all'));
+    }
+
     /**
      * Display a listing of the resource.
      *
