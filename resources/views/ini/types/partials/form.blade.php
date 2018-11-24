@@ -1,5 +1,5 @@
 <h3>{{$formTitle}}</h3>
-
+<br>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -15,17 +15,17 @@
     @if($editing)
         <input name="_method" type="hidden" value="PUT">
     @endif
-    <table>
-        <tr>
+    <table class="table table-bordered">
+        <tr class="text-left">
             <th>Name</th>
-            <td><input id="name", name="name" value="{{$iniType->name}}"></td>
+            <td><input id="name", name="name" size="50" value="{{$iniType->name}}"></td>
         </tr>
-        <tr>
+        <tr class="text-left">
             <th>Description</th>
-            <td><textarea id="description", name="description">{{$iniType->description}}</textarea>
+            <td><textarea id="description", name="description" cols="50" rows="20">{{$iniType->description}}</textarea>
         </tr>
     </table>
 
-    <input id="submit" type="submit" value="save">
-    <a href="{{$cancelRoute}}"><button type="button">Cancel</button></a>
+    <input id="submit" type="submit" class="btn btn-primary" value="save">
+    <a href="{{$cancelRoute}}"><button type="button" class="btn btn-default">Cancel</button></a>
 </form>
