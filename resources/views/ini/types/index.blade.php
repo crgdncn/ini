@@ -18,7 +18,7 @@
                 <td>{{$iniType->name}}</td>
                 <td>{{ str_limit($iniType->description, 200) }}</td>
                 <th>{{$iniType->sections->count()}}</th>
-                <td><a href="{{route('ini.types.edit', ['iniType' => $iniType])}}"><button>Edit</button></a></td>
+                <td><a href="{{route('ini.types.edit', ['iniType' => $iniType])}}"><button class="btn btn-sm">Edit</button></a></td>
             </tr>
         @endforeach
     </table>
