@@ -23,6 +23,9 @@ if (mix.inProduction()) {
 }
   else {
      mix.browserSync({
-         proxy: 'ini.app'
+         proxy: 'ini.app',
+         files: [
+                './resources/views/**/*.blade.php',
+            ]
      });
   }
