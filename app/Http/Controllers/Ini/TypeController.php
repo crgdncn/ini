@@ -26,15 +26,14 @@ class TypeController extends Controller
      */
     public function create(Request $request)
     {
-        $iniType = new IniType();
-
-        if ($request->ajax()) {
-            $render = view('ini.types.create', compact('iniType'))->render();
-            return e($render);
-        } else {
-            // abort(404);
-            return view('ini.types.create', compact('iniType'));
+        if (!$request->ajax()) {
+            abort(404);
         }
+
+        $iniType = new IniType();
+        $actionRoute = 'blah';
+
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute'))->render();
     }
 
     /**
@@ -58,38 +57,44 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\IniType  $iniType
+     * @param  \App\Models\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
     public function show(IniType $type)
     {
-        dd($type);
-        //abort(404);
+        //dd($type);
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\IniType  $iniType
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\IniType  $iniType
+     * @return \Illuminate\Http\Response ??? Is this not just text?
      */
-    public function edit(IniType $type)
+    public function edit(Request $request, IniType $type)
     {
 
         $iniType = $type;
 
         if (!$iniType->id) {
-            //abort(404);
+            abort(404);
         }
 
-        return view('ini.types.edit', compact('iniType'));
+        if (!$request->ajax()) {
+            abort(404);
+        }
+
+        $actionRoute = 'blah';
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute'))->render();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\IniType  $iniType
+     * @param  \App\Models\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, IniType $type)
@@ -107,7 +112,7 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\IniType  $iniType
+     * @param  \AppModels\IniType  $iniType
      * @return \Illuminate\Http\Response
      */
     public function destroy(IniType $type)

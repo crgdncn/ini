@@ -1,10 +1,27 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{{mix('/css/app.css')}}">
         <script type="javascript" href="{{mix('/js/app.js')}}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta id="token" name="token" content="{{csrf_token()}}">
+        <script>
+            function openModal(url, heading) {
+                var jqxhr = $.get(url, function(response) {
+                  $('#myModal #modal-header').text(heading);
+                  $('#myModal #modal-body').html(response);
+                })
+                  .fail(function(response) {
+                    $('#myModal #modal-body').html('Ooops, something went wrong!');
+                  })
+                  .always(function() {
+                    $('#myModal').modal('show');
+                  });
+            }
+        </script>
     </head>
     <body>
         <div class="sidenav">
@@ -15,5 +32,28 @@
         <div class="main">
             @yield('content')
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 id="modal-header" class="modal-title">INI File Management</h4>
+                </div>
+                <div id="modal-body" class="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <!-- div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div -->
+              </div>
+
+            </div>
+        </div>
+        <!-- End Modal -->
+
+
     </body>
 </html>

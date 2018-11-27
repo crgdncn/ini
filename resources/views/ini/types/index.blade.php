@@ -18,10 +18,10 @@
                 <td>{{$iniType->name}}</td>
                 <td>{{ str_limit($iniType->description, 200) }}</td>
                 <th>{{$iniType->sections->count()}}</th>
-                <td><a href="{{route('ini.types.edit', ['iniType' => $iniType])}}"><button class="btn btn-sm">Edit</button></a></td>
+                <td><button class="btn btn-sm" onClick="openModal('/ini/types/{{$iniType->id}}/edit', 'Edit INI Type')">Edit</button></td>
             </tr>
         @endforeach
     </table>
 
-    <a href="{{route('ini.types.create')}}"><button class="btn btn-primary">Add New File Type</button></a>
+    <button class="btn btn-primary" onClick="openModal('{{route('ini.types.create')}}', 'New INI Type')">Add New File Type</button>
 @endsection

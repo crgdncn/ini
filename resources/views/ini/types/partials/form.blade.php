@@ -1,5 +1,3 @@
-<h3>{{$formTitle}}</h3>
-<br>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -10,11 +8,11 @@
     </div>
 @endif
 
-<form method="post" action="{{$actionRoute}}">
+{{-- <form method="post" action="{{$actionRoute}}">
     {{csrf_field()}}
     @if($editing)
         <input name="_method" type="hidden" value="PUT">
-    @endif
+    @endif --}}
     <table class="table table-bordered">
         <tr class="text-left">
             <th>Name</th>
@@ -27,5 +25,5 @@
     </table>
 
     <input id="submit" type="submit" class="btn btn-primary" value="save">
-    <a href="{{$cancelRoute}}"><button type="button" class="btn btn-default">Cancel</button></a>
-</form>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+{{-- </form> --}}
