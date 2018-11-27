@@ -14,8 +14,8 @@ const mix = require('laravel-mix');
 mix.options({ processCssUrls: false });
 mix.disableNotifications();
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js/app.js')
+   .styles('resources/css/app.css', 'public/css/app.css');
 
 // version files in production
 if (mix.inProduction()) {
