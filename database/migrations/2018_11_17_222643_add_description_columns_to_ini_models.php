@@ -14,15 +14,15 @@ class AddDescriptionColumnsToIniModels extends Migration
     public function up()
     {
         Schema::table('ini_types', function (Blueprint $table) {
-            $table->text('description')->after('name');
+            $table->text('description')->after('name')->nullable();
         });
 
         Schema::table('ini_sections', function (Blueprint $table) {
-            $table->text('description')->after('name');
+            $table->text('description')->after('name')->nullable();
         });
 
         Schema::table('ini_keys', function (Blueprint $table) {
-            $table->text('description')->after('name');
+            $table->text('description')->after('name')->nullable();
         });
     }
 
