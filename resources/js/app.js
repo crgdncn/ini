@@ -26,7 +26,7 @@ function postFormModal(formId, objectId) {
     var formSelector = '#' + formId;
     var form = $(formSelector);
     var url = form.attr('action');
-    data = form.serialize();
+    var data = form.serialize();
 
     var jqxhr = $.post(url, data)
     .done(function(response) {
@@ -37,6 +37,18 @@ function postFormModal(formId, objectId) {
         }
         $('#iniModal').modal('hide');
     }).fail(function(response) {
-        console.log( "error: " + response );
+        if (response.status === 422) {
+            // TODO - the hidden toggle does not work at this time.
+            var message = response.responseJSON.message;
+            $('#message-error').removeClass('hidden').html(message);
+
+            var errors = response.responseJSON.errors;
+            $.each(errors, function (key, value) {
+                $('#' + key + '-error').html(value);
+            });
+        } else {
+            $('#iniModal #modal-header').text('Error');
+            $('#iniModal #modal-body').html('Ooops, something went wrong!');
+        }
     })
 }

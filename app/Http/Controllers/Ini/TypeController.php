@@ -46,7 +46,7 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:ini_types,name|max:32',
+            'name' => 'required|unique:ini_types,name,|max:32',
         ]);
 
         $iniType = IniType::create($request->all());
@@ -101,7 +101,7 @@ class TypeController extends Controller
     public function update(Request $request, IniType $type)
     {
         $request->validate([
-            'name' => 'required|unique:ini_types,name|max:32',
+            'name' => 'required|unique:ini_types,name,' . $type->id . '|max:32',
         ]);
 
         $type->update($request->all());
