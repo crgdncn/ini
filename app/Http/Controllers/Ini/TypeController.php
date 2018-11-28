@@ -32,9 +32,9 @@ class TypeController extends Controller
 
         $iniType = new IniType();
         $editing = false;
-        $actionRoute = route('ini.types.create');
+        $actionRoute = route('ini.types.store');
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'))->render();
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'));
     }
 
     /**
@@ -45,25 +45,23 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'name' => 'required|unique:ini_types|max:32',
-            'description' => 'required',
+            'name' => 'required|unique:ini_types,name|max:32',
         ]);
 
         $iniType = IniType::create($request->all());
-        return redirect(route('ini.types.index'));
+        return view('ini.types.includes.iniTypeTableRow', compact('iniType'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\IniType  $iniType
+     * @param  \App\Models\IniType  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(IniType $type)
+    // public function show(IniType $type)
+    public function show()
     {
-        //dd($type);
         abort(404);
     }
 
@@ -71,7 +69,7 @@ class TypeController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IniType  $iniType
+     * @param  \App\Models\IniType  $type
      * @return \Illuminate\Http\Response ??? Is this not just text?
      */
     public function edit(Request $request, IniType $type)
@@ -88,38 +86,39 @@ class TypeController extends Controller
         }
 
         $editing = true;
-        $actionRoute = route('ini.types.edit', $iniType->id);
+        $actionRoute = route('ini.types.update', $iniType->id);
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'))->render();
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IniType  $iniType
+     * @param  \App\Models\IniType  $type
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, IniType $type)
     {
         $request->validate([
-            'name' => 'required|unique:ini_types|max:32',
-            'description' => 'required',
+            'name' => 'required|unique:ini_types,name|max:32',
         ]);
 
         $type->update($request->all());
 
-        return redirect(route('ini.types.index'));
+        $iniType = $type;
+
+        return view('ini.types.includes.iniTypeTableRow', compact('iniType'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \AppModels\IniType  $iniType
+     * @param  \AppModels\IniType  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy(IniType $type)
     {
-        dd(__METHOD__);
+        $type->delete();
     }
 }

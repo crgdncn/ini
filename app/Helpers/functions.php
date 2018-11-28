@@ -8,5 +8,5 @@
  */
 function getObjectBaseClassName($object)
 {
-    return basename(str_replace('\\', '/', get_class($object)));
+    return trim(basename(str_replace('\\', '/', get_class($object))));
 }

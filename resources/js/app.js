@@ -1,3 +1,9 @@
+/**
+ * Open up a modal with a form inside
+ * @param  string url
+ * @param  string heading
+ * @return void
+ */
 function getFormModal(url, heading) {
     var jqxhr = $.get(url, function(response) {
       $('#iniModal #modal-header').text(heading);
@@ -10,23 +16,33 @@ function getFormModal(url, heading) {
     });
 }
 
-
-function postFormModal(url, formId) {
+/**
+ * post all form fields to defined url
+ * @param  string formId
+ * @param  integer objectId
+ * @return void
+ */
+function postFormModal(formId, objectId) {
+    var formSelector = '#' + formId;
+    var form = $(formSelector);
+    var url = form.attr('data-url');
 
     var data = {};
-    var cssSelect = '#' + formId + ' input, select, textarea hidden';
-
-    $(cssSelect).each(function(index) {
+    var fieldSelector = '#' + formId + ' input, select, textarea, hidden';
+    $(fieldSelector).each(function(index) {
         var input = $(this);
         data[input.attr('name')] = input.val();
     });
 
     var jqxhr = $.post(url, data)
     .done(function(response) {
-        alert( "Data Loaded: " + response );
+        if (typeof objectId == 'undefined') {
+            $('#tbody').append(response);
+        } else {
+            $('#trow_' + objectId).replaceWith(response);
+        }
+        $('#iniModal').modal('hide');
     }).fail(function(response) {
-        alert( "error" );
-    }).always(function() {
-        alert( "finished" ); // I don't think we need this unless we want to show a success message
-    });
+        console.log( "error: " + response );
+    })
 }

@@ -8,11 +8,16 @@
     </div>
 @endif
 
-<form id="{{getObjectBaseClassName($iniType)}}" url="{{$actionRoute}}">
+<form id="{{getObjectBaseClassName($iniType)}}" data-url="{{$actionRoute}}">
     {{csrf_field()}}
-    @if($editing)
-        <input type="hidden" name="_method" value="PUT">
-    @endif
+    @php
+        if($editing) {
+            $method = 'PUT';
+        } else {
+            $method = 'POST';
+        }
+    @endphp
+    <input type="hidden" name="_method" value="{{$method}}">
     <table class="table table-bordered">
         <tr class="text-left">
             <th>Name</th>
@@ -24,6 +29,13 @@
         </tr>
     </table>
 
-    <button id="submit" type="button" class="btn btn-primary" onClick="postFormModal("{{getObjectBaseClassName($iniType)}}")">Save</button>
+    <button
+        id="submit"
+        type="button"
+        class="btn btn-primary"
+        onClick="postFormModal('{{getObjectBaseClassName($iniType)}}', {{$iniType->id}})"
+        >
+    Save
+    </button>
     <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </form>
