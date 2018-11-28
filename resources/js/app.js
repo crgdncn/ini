@@ -25,14 +25,8 @@ function getFormModal(url, heading) {
 function postFormModal(formId, objectId) {
     var formSelector = '#' + formId;
     var form = $(formSelector);
-    var url = form.attr('data-url');
-
-    var data = {};
-    var fieldSelector = '#' + formId + ' input, select, textarea, hidden';
-    $(fieldSelector).each(function(index) {
-        var input = $(this);
-        data[input.attr('name')] = input.val();
-    });
+    var url = form.attr('action');
+    data = form.serialize();
 
     var jqxhr = $.post(url, data)
     .done(function(response) {

@@ -31,10 +31,10 @@ class TypeController extends Controller
         }
 
         $iniType = new IniType();
-        $editing = false;
+        $method = 'POST';
         $actionRoute = route('ini.types.store');
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'));
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'method'));
     }
 
     /**
@@ -85,10 +85,10 @@ class TypeController extends Controller
             abort(404);
         }
 
-        $editing = true;
+        $method = 'PUT';
         $actionRoute = route('ini.types.update', $iniType->id);
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'));
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'method'));
     }
 
     /**

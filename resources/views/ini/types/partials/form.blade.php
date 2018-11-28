@@ -8,15 +8,8 @@
     </div>
 @endif
 
-<form id="{{getObjectBaseClassName($iniType)}}" data-url="{{$actionRoute}}">
+<form id="{{getObjectBaseClassName($iniType)}}" action="{{$actionRoute}}">
     {{csrf_field()}}
-    @php
-        if($editing) {
-            $method = 'PUT';
-        } else {
-            $method = 'POST';
-        }
-    @endphp
     <input type="hidden" name="_method" value="{{$method}}">
     <table class="table table-bordered">
         <tr class="text-left">
