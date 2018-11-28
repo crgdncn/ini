@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // load helpers
+        foreach (glob(app_path() . '/Helpers/*.php') as $filename) {
+            require_once($filename);
+        }
     }
 
     /**

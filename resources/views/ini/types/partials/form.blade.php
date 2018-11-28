@@ -8,11 +8,11 @@
     </div>
 @endif
 
-{{-- <form method="post" action="{{$actionRoute}}">
+<form id="{{getObjectBaseClassName($iniType)}}" url="{{$actionRoute}}">
     {{csrf_field()}}
     @if($editing)
-        <input name="_method" type="hidden" value="PUT">
-    @endif --}}
+        <input type="hidden" name="_method" value="PUT">
+    @endif
     <table class="table table-bordered">
         <tr class="text-left">
             <th>Name</th>
@@ -24,6 +24,6 @@
         </tr>
     </table>
 
-    <input id="submit" type="submit" class="btn btn-primary" value="save">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-{{-- </form> --}}
+    <button id="submit" type="button" class="btn btn-primary" onClick="postFormModal("{{getObjectBaseClassName($iniType)}}")">Save</button>
+    <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>

@@ -31,9 +31,10 @@ class TypeController extends Controller
         }
 
         $iniType = new IniType();
-        $actionRoute = 'blah';
+        $editing = false;
+        $actionRoute = route('ini.types.create');
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute'))->render();
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'))->render();
     }
 
     /**
@@ -78,7 +79,7 @@ class TypeController extends Controller
 
         $iniType = $type;
 
-        if (!$iniType->id) {
+        if (!$iniType || !$iniType->id) {
             abort(404);
         }
 
@@ -86,8 +87,10 @@ class TypeController extends Controller
             abort(404);
         }
 
-        $actionRoute = 'blah';
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute'))->render();
+        $editing = true;
+        $actionRoute = route('ini.types.edit', $iniType->id);
+
+        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'editing'))->render();
     }
 
     /**

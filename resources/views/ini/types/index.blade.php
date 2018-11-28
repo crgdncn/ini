@@ -14,14 +14,8 @@
             </tr>
         </thead>
         @foreach($iniTypes as $iniType)
-            <tr>
-                <td>{{$iniType->name}}</td>
-                <td>{{ str_limit($iniType->description, 200) }}</td>
-                <th>{{$iniType->sections->count()}}</th>
-                <td><button class="btn btn-sm" onClick="openModal('/ini/types/{{$iniType->id}}/edit', 'Edit INI Type')">Edit</button></td>
-            </tr>
+            @include('ini.types.includes.iniTypeTableRow')
         @endforeach
     </table>
-
-    <button class="btn btn-primary" onClick="openModal('{{route('ini.types.create')}}', 'New INI Type')">Add New File Type</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.create')}}', 'New INI Type')">Add New File Type</button>
 @endsection
