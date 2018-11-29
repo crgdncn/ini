@@ -10,13 +10,13 @@
                 <th width="5%">ID</th>
                 <th width="20%">File Type</th>
                 <th class="text-center">Description</th>
-                <th width="15%"># Sections</th>
-                <th width="5%"></th>
+                <th width="10%" style="text-align:center"># Sections</th>
+                <th width="10%"></th>
             </tr>
         </thead>
         <tbody id="tbody">
-        @foreach($iniTypes as $iniType)
-            @include('ini.types.includes.iniTypeTableRow')
+        @foreach($iniTypes as $type)
+            @include('ini.types.partials.iniTypeTableRow')
         @endforeach
         </tbody>
     </table>

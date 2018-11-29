@@ -49,8 +49,8 @@ class TypeController extends Controller
             'name' => 'required|unique:ini_types,name,|max:32',
         ]);
 
-        $iniType = IniType::create($request->all());
-        return view('ini.types.includes.iniTypeTableRow', compact('iniType'));
+        $type = IniType::create($request->all());
+        return view('ini.types.partials.iniTypeTableRow', compact('type'));
     }
 
     /**
@@ -74,10 +74,7 @@ class TypeController extends Controller
      */
     public function edit(Request $request, IniType $type)
     {
-
-        $iniType = $type;
-
-        if (!$iniType || !$iniType->id) {
+        if (!$type || !$type->id) {
             abort(404);
         }
 
@@ -86,9 +83,9 @@ class TypeController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('ini.types.update', $iniType->id);
+        $actionRoute = route('ini.types.update', $type->id);
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'method'));
+        return view('ini.types.partials.form', compact('type', 'actionRoute', 'method'));
     }
 
     /**
@@ -106,9 +103,7 @@ class TypeController extends Controller
 
         $type->update($request->all());
 
-        $iniType = $type;
-
-        return view('ini.types.includes.iniTypeTableRow', compact('iniType'));
+        return view('ini.types.partials.iniTypeTableRow', compact('type'));
     }
 
     /**
