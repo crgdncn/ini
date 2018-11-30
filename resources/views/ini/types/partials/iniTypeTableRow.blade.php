@@ -4,9 +4,6 @@
     <td id="description">{{ str_limit($type->description, 200) }}</td>
     <td style="text-align:center">{{$type->sections->count()}}</td>
     <td>
-        <form id="delete-type-{{$type->id}}" action="{{route('ini.types.destroy', $type->id)}}">
-        {{csrf_field()}}
-        <input type="hidden" name="_method" value="DELETE">
         <button
             class="btn btn-sm"
             type="button"
@@ -21,6 +18,9 @@
         >
         Delete
         </button>
+    <form id="delete-type-{{$type->id}}" action="{{route('ini.types.destroy', $type->id)}}">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
     </form>
     </td>
 </tr>
