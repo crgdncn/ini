@@ -8,6 +8,11 @@ use App\Models\IniKey;
 
 class IniSection extends Model
 {
+    protected $fillable = [
+        'ini_type_id',
+        'name',
+        'description',
+    ];
 
     /**
      * All sections belong to a single ini file type

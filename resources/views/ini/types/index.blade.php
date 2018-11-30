@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody id="tbody">
-        @foreach($iniTypes as $type)
+        @foreach($types as $type)
             @include('ini.types.partials.iniTypeTableRow')
         @endforeach
         </tbody>

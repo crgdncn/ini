@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // unique across multiple columns
+        Felixkiss\UniqueWithValidator\ServiceProvider::class,
+
     ],
 
     /*

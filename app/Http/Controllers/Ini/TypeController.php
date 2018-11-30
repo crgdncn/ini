@@ -15,8 +15,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $iniTypes = IniType::get();
-        return view('ini.types.index', compact('iniTypes'));
+        $types = IniType::get();
+        return view('ini.types.index', compact('types'));
     }
 
     /**
@@ -30,11 +30,11 @@ class TypeController extends Controller
             abort(404);
         }
 
-        $iniType = new IniType();
+        $type = new IniType();
         $method = 'POST';
         $actionRoute = route('ini.types.store');
 
-        return view('ini.types.partials.form', compact('iniType', 'actionRoute', 'method'));
+        return view('ini.types.partials.form', compact('type', 'actionRoute', 'method'));
     }
 
     /**
@@ -59,10 +59,10 @@ class TypeController extends Controller
      * @param  \App\Models\IniType  $type
      * @return \Illuminate\Http\Response
      */
-    // public function show(IniType $type)
-    public function show()
+    public function show(IniType $type)
     {
-        abort(404);
+        $sections = $type->sections()->with('keys');
+        return view('ini.types.show', compact('type', 'sections'));
     }
 
     /**
