@@ -11,9 +11,9 @@
     </head>
     <body>
         <div class="sidenav">
-            <a href="{{route('ini.types.index')}}">Types</a>
-            <a href="{{route('ini.sections.all')}}">Sections</a>
-            <a href="{{route('ini.keys.all')}}">Keys</a>
+            <a href="{{route('home')}}">Home</a>
+            <a href="{{route('ini.types.index')}}">Define</a>
+            <a href="{{route('home')}}">Create</a>
         </div>
         <div class="main">
             @yield('content')
