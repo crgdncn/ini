@@ -28,7 +28,7 @@
                         <h4 id="modal-header" class="modal-title">INI File Management</h4>
                     </div>
                 <div id="modal-body" class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <p>INI Modal Body</p>
                 </div>
                 <!-- div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

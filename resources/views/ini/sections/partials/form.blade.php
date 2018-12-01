@@ -1,8 +1,8 @@
 <span id="message-error" class="help-block"></span>
 
 <form id="{{getObjectBaseClassName($section)}}" action="{{$actionRoute}}">
-    {{csrf_field()}}
-    <input type="hidden" name="_method" value="{{$method}}">
+    {{ csrf_field() }}
+    {{ method_field($method) }}
     <input type="hidden" name="ini_type_id", value="{{$type->id}}">
     <table class="table table-bordered">
         <tr class="text-left">

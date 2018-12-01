@@ -4,8 +4,8 @@
 </div>
 
 <form id="{{getObjectBaseClassName($type)}}" action="{{$actionRoute}}">
-    {{csrf_field()}}
-    <input type="hidden" name="_method" value="{{$method}}">
+    {{ csrf_field() }}
+    {{ method_field($method) }}
     <table class="table table-bordered">
         <tr class="text-left">
             <th>Name</th>

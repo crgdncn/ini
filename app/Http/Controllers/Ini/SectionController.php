@@ -65,12 +65,14 @@ class SectionController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \App\Models\IniType  $type
      * @param  \App\Modals\IniSection  $section
      * @return \Illuminate\Http\Response
      */
     public function show(IniType $type, IniSection $section)
     {
-        //
+        $keys = $section->keys;
+        return view('ini.sections.show', compact('type', 'section', 'keys'));
     }
 
     /**

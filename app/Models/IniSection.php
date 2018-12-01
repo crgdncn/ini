@@ -17,9 +17,9 @@ class IniSection extends Model
     /**
      * All sections belong to a single ini file type
      *
-     * @return IniType
+     * @return App\Models\IniType
      */
-    public function type()
+    public function iniType()
     {
         return $this->belongsTo(IniType::class);
     }
@@ -29,8 +29,26 @@ class IniSection extends Model
      *
      * @return Collection
      */
-    public function keys()
+    public function iniKeys()
     {
         return $this->hasMany(IniKey::class);
+    }
+
+    /**
+     * short hand for iniType
+     * @return App\Models\IniType
+     */
+    public function getTypeAttribute()
+    {
+        return $this->iniType;
+    }
+
+    /**
+     * short hand to get section keys
+     * @return Collection
+     */
+    public function getKeysAttribute()
+    {
+        return $this->iniKeys;
     }
 }

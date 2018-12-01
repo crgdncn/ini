@@ -7,7 +7,7 @@
         <button
             class="btn btn-sm"
             type="button"
-            onClick="getFormModal('{{route('ini.types.edit', $type->id)}}', 'Edit')"
+            onClick="getFormModal('{{route('ini.types.edit', $type->id)}}', 'Edit Type')"
         >
         Edit
         </button>

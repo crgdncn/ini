@@ -1,13 +1,15 @@
 <tr id="trow_{{$section->id}}">
     <td>{{$section->id}}</td>
-    <td id="name">{{$section->name}}</td>
+    <td id="name">
+        <a href="{{route('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
+    </td>
     <td id="description">{{ str_limit($section->description, 200) }}</td>
     <td style="text-align:center">{{$section->keys->count()}}</td>
     <td>
         <button
             class="btn btn-sm"
             type="button"
-            onClick="getFormModal('{{route('ini.types.sections.edit', [$type, $section])}}', 'Edit')"
+            onClick="getFormModal('{{route('ini.types.sections.edit', [$type, $section])}}', 'Edit Section')"
         >
         Edit
         </button>

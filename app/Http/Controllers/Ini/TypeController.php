@@ -61,7 +61,7 @@ class TypeController extends Controller
      */
     public function show(IniType $type)
     {
-        $sections = $type->sections()->with('keys');
+        $sections = $type->sections;
         return view('ini.types.show', compact('type', 'sections'));
     }
 

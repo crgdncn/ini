@@ -3,24 +3,25 @@
 @section('title', 'File Type')
 
 @section('content')
-    <p>INI Type</p>
+    <p><a href="{{route('ini.types.show', $type)}}">Type ({{$type->name}})</a> -> Section</p>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
                 <th width="5%">ID</th>
-                <td>{{$type->id}}</td>
+                <td>{{$section->id}}</td>
             </tr>
             <tr>
                 <th width="20%">Name</th>
-                <td>{{$type->name}}</td>
+                <td>{{$section->name}}</td>
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{$type->description}}</td>
+                <td>{{$section->description}}</td>
             </tr>
         </tbody>
     </table>
-    <p>Sections</p>
+
+    <p>Keys</p>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="text-left">
@@ -32,10 +33,10 @@
             </tr>
         </thead>
         <tbody id="tbody">
-        @foreach($type->sections as $section)
-            @include('ini.sections.partials.iniSectionTableRow')
+        @foreach($section->keys as $key)
+            @include('ini.keys.partials.iniKeyTableRow')
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.keys.create', [$type, $section])}}', 'New Key')">Add New Key</button>
 @endsection

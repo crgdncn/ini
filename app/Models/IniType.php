@@ -17,8 +17,17 @@ class IniType extends Model
      *
      * @return Collection
      */
-    public function sections()
+    public function iniSections()
     {
         return $this->hasMany(IniSection::class);
+    }
+
+    /**
+     * short hand to get sections
+     * @return Collection
+     */
+    public function getSectionsAttribute()
+    {
+        return $this->iniSections;
     }
 }
