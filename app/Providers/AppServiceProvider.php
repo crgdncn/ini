@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // required for foriegn key length
+        Schema::defaultStringLength(191);
+
         // load helpers
         foreach (glob(app_path() . '/Helpers/*.php') as $filename) {
             require_once($filename);

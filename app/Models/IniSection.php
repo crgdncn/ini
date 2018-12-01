@@ -51,4 +51,22 @@ class IniSection extends Model
     {
         return $this->iniKeys;
     }
+
+    /**
+     * find all sections by type
+     * @param  App\Models\IniType | integer $type
+     * @return Collection
+     */
+    public static function findByType($type)
+    {
+        if (get_class($type) == "App\Models\IniType") {
+            $type = $type->id;
+        }
+
+        if (!is_integer($type)) {
+            return null;
+        }
+
+        return IniSection::where('ini_type_id', '=', $type)->get();
+    }
 }

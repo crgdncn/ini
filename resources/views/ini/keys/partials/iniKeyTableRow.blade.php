@@ -13,7 +13,7 @@
         <button
             class="btn btn-sm"
             type="button"
-            onClick="postObjectDelete('delete-key-{{$key->id}}', {{$type->id}})"
+            onClick="postObjectDelete('delete-key-{{$key->id}}', {{$key->id}})"
         >
         Delete
         </button>

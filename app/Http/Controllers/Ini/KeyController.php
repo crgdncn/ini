@@ -12,24 +12,7 @@ class KeyController extends Controller
 {
     public function all()
     {
-        $all = IniType::orderBy('name', 'asc')
-            ->with(['sections' => function ($query) {
-                $query->orderBy('name', 'asc')
-                    ->with(['keys' => function ($query) {
-                        $query->orderBy('name', 'asc');
-                    }]);
-            }])
-            ->get();
-
-
-            // dd(IniType::orderBy('name', 'asc')
-            // ->with(['sections' => function ($query) {
-            //     $query->orderBy('name', 'asc')
-            //         ->with(['keys' => function ($query) {
-            //             $query->orderBy('name', 'asc');
-            //         }]);
-            // }])->toSql());
-
+        $all = IniType::orderBy('name', 'asc')->get();
         return view('ini.keys.all', compact('all'));
     }
 
@@ -38,84 +21,94 @@ class KeyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(IniType $iniType, IniSection $iniSection)
+    public function index()
     {
-        //
+        abort(404);
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * [create description]
+     * @param  IniType    $type
+     * @param  IniSection $section
      * @return \Illuminate\Http\Response
      */
-    public function create(IniType $iniType, IniSection $iniSection)
+    public function create(IniType $type, IniSection $section)
     {
-        //
+        $key = new IniKey();
+        $method = 'POST';
+        $actionRoute = route('ini.types.sections.keys.store', [$type, $section]);
+        return view('ini.keys.partials.form', compact('key', 'section', 'type', 'actionRoute', 'method'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IniType $iniType
-     * @param  \App\Models\IniSection $iniSection
+     * @param  \App\Models\IniType $type
+     * @param  \App\Models\IniSection $section
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, IniType $iniType, IniSection $iniSection)
+    public function store(Request $request, IniType $type, IniSection $section)
     {
-        //
+        $request->validate(['name' => 'required|max:32|unique_with:ini_keys,ini_section_id']);
+        $key = IniKey::create($request->all());
+        return view('ini.keys.partials.iniKeyTableRow', compact('key', 'section', 'type'));
     }
 
     /**
-     * Display the specified resource.
      *
-     * @param  \App\Models\IniType $iniType
-     * @param  \App\Models\IniSection $iniSection
-     * @param  \App\Models\IniKey  $iniKey
      * @return \Illuminate\Http\Response
      */
-    public function show(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
+    public function show()
     {
-        //
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\IniType $iniType
-     * @param  \App\Models\IniSection $iniSection
-     * @param  \App\Models\IniKey  $iniKey
+     * @param  \App\Models\IniType $type
+     * @param  \App\Models\IniSection $section
+     * @param  \App\Models\IniKey  $key
      * @return \Illuminate\Http\Response
      */
-    public function edit(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
+    public function edit(IniType $type, IniSection $section, IniKey $key)
     {
-        //
+        $method = 'PUT';
+        $actionRoute = route('ini.types.sections.keys.update', [$type, $section, $key]);
+        return view('ini.keys.partials.form', compact('key', 'section', 'type', 'actionRoute', 'method'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IniType $iniType
-     * @param  \App\Models\IniSection $iniSection
-     * @param  \App\Models\IniKey  $iniKey
+     * @param  \App\Models\IniType $type
+     * @param  \App\Models\IniSection $section
+     * @param  \App\Models\IniKey  $key
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IniType $iniType, IniSection $iniSection, IniKey $iniKey)
+    public function update(Request $request, IniType $type, IniSection $section, IniKey $key)
     {
-        //
+        $request->validate(['name' => 'required|max:32|unique_with:ini_keys,ini_section_id,' . $key->id]);
+        $key->update($request->all());
+        return view('ini.keys.partials.iniKeyTableRow', compact('key', 'section', 'type'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\IniType $iniType
-     * @param  \App\Models\IniSection $iniSection
-     * @param  \App\Models\IniKey  $iniKey
+     * @param  \App\Models\IniType $type
+     * @param  \App\Models\IniSection $section
+     * @param  \App\Models\IniKey  $key
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IniType $iniType, IniSection $iniSection, IniKey $iniKey)
+    public function destroy(IniType $type, IniSection $section, IniKey $key)
     {
-        //
+        if ($type && $section && $key) {
+            $key->delete();
+        }
     }
 }

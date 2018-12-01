@@ -16,13 +16,15 @@ class IniTableForeignKeys extends Migration
         Schema::table('ini_sections', function (Blueprint $table) {
             $table->foreign('ini_type_id')
                 ->references('id')
-                ->on('ini_types');
+                ->on('ini_types')
+                ->onDelete('cascade');
         });
 
         Schema::table('ini_keys', function (Blueprint $table) {
             $table->foreign('ini_section_id')
                 ->references('id')
-                ->on('ini_sections');
+                ->on('ini_sections')
+                ->onDelete('cascade');
         });
     }
 

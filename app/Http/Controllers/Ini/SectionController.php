@@ -12,7 +12,7 @@ class SectionController extends Controller
 {
     public function all()
     {
-        $all = IniType::orderBy('name', 'asc')->with('sections')->get();
+        $all = IniType::orderBy('name', 'asc')->get();
         return view('ini.sections.all', compact('all'));
     }
 
@@ -122,7 +122,8 @@ class SectionController extends Controller
      */
     public function destroy(IniType $type, IniSection $section)
     {
-        \Log::info($type->name . ' / ' . $section->name);
-        $section->delete();
+        if ($type && $section) {
+            $section->delete();
+        }
     }
 }

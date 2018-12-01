@@ -30,7 +30,7 @@ function postFormModal(formId, objectId) {
 
     var jqxhr = $.post(url, data)
     .done(function(response) {
-        // is creating, objectId will not be defined
+        // if creating, objectId will not be defined
         if (typeof objectId == 'undefined') {
             $('#tbody').append(response);
         } else {
@@ -38,12 +38,9 @@ function postFormModal(formId, objectId) {
         }
         $('#iniModal').modal('hide');
     }).fail(function(response) {
-        console.log(response);
         if (response.status === 422) {
-            // TODO - the hidden toggle does not work at this time.
             var message = response.responseJSON.message;
-            $('#message-error').removeClass('hidden').html(message);
-
+            $('#message-error').html(message);
             var errors = response.responseJSON.errors;
             $.each(errors, function (key, value) {
                 $('#' + key + '-error').html(value);
