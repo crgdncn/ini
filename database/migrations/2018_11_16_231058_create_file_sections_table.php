@@ -28,6 +28,8 @@ class CreateFileSectionsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('ini_sections');
+        Schema::enableForeignkeyConstraints();
     }
 }

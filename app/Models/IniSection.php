@@ -59,14 +59,18 @@ class IniSection extends Model
      */
     public static function findByType($type)
     {
-        if (get_class($type) == "App\Models\IniType") {
-            $type = $type->id;
+        if (is_integer($type)) {
+            $typeId = $type;
         }
 
-        if (!is_integer($type)) {
+        if (is_object() && get_class($type) == IniType::class) {
+            $typeId = $type->id;
+        }
+
+        if (!is_integer($typeId)) {
             return null;
         }
 
-        return IniSection::where('ini_type_id', '=', $type)->get();
+        return IniSection::where('ini_type_id', '=', $typeId)->get();
     }
 }

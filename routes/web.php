@@ -17,13 +17,21 @@ Route::get('/', "HomeController@index")->name('home');
  * Define INI types, sections and keys
  */
 Route::prefix('ini')->name('ini.')->group(function () {
-
-    Route::get('/sections/all', "Ini\SectionController@all")->name('sections.all');
-    Route::get('/keys/all', "Ini\KeyController@all")->name('keys.all');
-
     Route::resources([
         'types' => 'Ini\TypeController',
         'types.sections' => 'Ini\SectionController',
         'types.sections.keys' => 'Ini\KeyController',
+    ]);
+});
+
+
+/*
+ * Create INI files
+ */
+Route::prefix('files')->name('files.')->group(function () {
+    Route::resources([
+        'files' => 'Files\FileController',
+        'file.sections' => 'Files\SectionController',
+        'file.sections.keys' => 'Files\KeyController',
     ]);
 });

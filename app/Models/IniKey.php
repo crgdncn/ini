@@ -49,14 +49,18 @@ class IniKey extends Model
      */
     public static function findBySection($section)
     {
-        if (get_class($section) == "App\Models\IniSection") {
-            $section = $section->id;
+        if (is_integer($section)) {
+            $sectionId = $section;
         }
 
-        if (!is_integer($section)) {
+        if (is_object($section) && get_class($section) == IniSection::class) {
+            $sectionId = $section->id;
+        }
+
+        if (!is_integer($sectionId)) {
             return null;
         }
 
-        return IniKey::where('ini_section_id', '=', $section)->get();
+        return IniKey::where('ini_section_id', '=', $sectionId)->get();
     }
 }
