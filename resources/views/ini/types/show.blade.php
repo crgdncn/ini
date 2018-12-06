@@ -3,7 +3,10 @@
 @section('title', 'File Type')
 
 @section('content')
-    <p>INI Type</p>
+    <p>
+        <a href="{{route('ini.types.index')}}"> INI File Types </a>
+        / {{$type->name}}
+    </p>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>

@@ -3,7 +3,11 @@
 @section('title', 'File Type')
 
 @section('content')
-    <p><a href="{{route('ini.types.show', $type)}}">Type ({{$type->name}})</a> -> Section</p>
+     <p>
+        <a href="{{route('ini.types.index')}}"> INI File Types </a>
+        / <a href="{{route('ini.types.show', $type)}}">{{$type->name}}</a>
+        / {{$section->name}}
+    </p>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
@@ -28,7 +32,6 @@
                 <th width="5%">ID</th>
                 <th width="20%">Name</th>
                 <th class="text-center">Description</th>
-                <th width="10%" style="text-align:center"># Keys</th>
                 <th width="10%"></th>
             </tr>
         </thead>
