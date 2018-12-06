@@ -13,7 +13,7 @@
         <div class="sidenav">
             <a href="{{route('home')}}">Home</a>
             <a href="{{route('ini.types.index')}}">Define</a>
-            <a href="{{route('home')}}">Create</a>
+            <a href="{{route('files.files.index')}}">Create</a>
         </div>
         <div class="main">
             @yield('content')

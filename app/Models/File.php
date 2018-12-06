@@ -10,7 +10,8 @@ use App\Models\FileSection;
 class File extends Model
 {
     protected $fillable = [
-
+        'ini_type_id',
+        'file_name',
     ];
 
     public function iniType()
