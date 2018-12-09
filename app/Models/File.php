@@ -19,8 +19,54 @@ class File extends Model
         return $this->belongsTo(IniType::class);
     }
 
-    public function fileSection()
+    public function fileSections()
     {
         return $this->hasMany(FileSection::class);
+    }
+
+    /**
+     * List of available ini sections that have
+     * not already been assigned to this file
+     * @return Collection
+     */
+    public function availableSections()
+    {
+        return IniSection::select(['ini_sections.*'])
+            ->where('ini_type_id', '=', $this->type->id)
+            ->whereNotIn('id', function ($query) {
+                $query->select('ini_sections.id')
+                ->from('ini_sections')
+                ->join('file_sections', 'ini_sections.id', '=', 'file_sections.ini_section_id')
+                ->where('file_sections.file_id', '=', $this->id);
+            })
+            ->orderBy('ini_sections.name')
+            ->get();
+    }
+
+    /**
+     * short cut to get file name
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->file_name;
+    }
+
+    /**
+     * short cut for ini type
+     * @return \App\Models\IniType
+     */
+    public function getTypeAttribute()
+    {
+        return $this->iniType;
+    }
+
+    /**
+     * short cut for file_sections
+     * @return Collection
+     */
+    public function getSectionsAttribute()
+    {
+        return $this->fileSections;
     }
 }

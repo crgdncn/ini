@@ -1,11 +1,9 @@
-
 <div class="alert alert-danger hidden">
     <span id="message-error" class="help-block"></span>
 </div>
 
 <form id="{{getObjectBaseClassName($file)}}" action="{{$actionRoute}}">
-    {{ csrf_field() }}
-    {{ method_field($method) }}
+    {{ csrf_field() }}{{ method_field($method) }}
     <table class="table table-bordered">
         <tr class="text-left">
             <th>Name</th>

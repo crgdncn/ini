@@ -51,11 +51,9 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file_name' => 'required|unique:files,file_name,|max:32',
+            'file_name' => 'required|unique:files,file_name|max:32',
             'ini_type_id' => 'required',
         ]);
-
-        // dd($request->all());
 
         $file = File::create($request->all());
         return view('files.file.partials.fileTableRow', compact('file'));
@@ -64,12 +62,14 @@ class FileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(File $file)
     {
-        dd(__METHOD__);
+        $type = $file->type;
+        $sections = $file->sections;
+        return view('files.file.show', compact('file', 'type', 'sections'));
     }
 
     /**
@@ -101,18 +101,24 @@ class FileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, File $file)
     {
-        dd(__METHOD__);
+        $request->validate([
+            'file_name' => 'required|max:32|unique:files,file_name,' . $file->id,
+            'ini_type_id' => 'required',
+        ]);
+
+        $file->update($request->all());
+        return view('files.file.partials.fileTableRow', compact('file'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  File  $file
+     * @param  \App\Models\File  $file
      * @return \Illuminate\Http\Response
      */
     public function destroy(File $file)

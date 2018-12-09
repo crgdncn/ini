@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Files;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\File;
+use App\Models\FileSection;
 
 class SectionController extends Controller
 {
@@ -14,7 +16,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -22,20 +24,33 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(File $file)
     {
-        //
+        $sections = $file->availableSections();
+        $actionRoute = route('files.file.sections.store', $file);
+        $method = 'POST';
+        return view('files.sections.form', compact('file', 'sections', 'actionRoute', 'method'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Save to file_sections
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, File $file)
     {
-        //
+        $sections = [];
+        $iniSectionIds = $request->input('sections', []);
+
+        foreach ($iniSectionIds as $iniSectionId) {
+            $sections[] = FileSection::create([
+                'file_id' => $file->id,
+                'ini_section_id' => $iniSectionId
+            ]);
+        }
+
+        return view('files.sections.tableRows', compact('file', 'sections'));
     }
 
     /**
@@ -44,9 +59,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -55,9 +70,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -67,19 +82,20 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        abort(404);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\ModelsFile $file
+     * @param \App\Models\FileSection
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(File $file, FileSection $section)
     {
-        //
+        $section->delete();
     }
 }
