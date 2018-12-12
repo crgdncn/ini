@@ -1,6 +1,10 @@
 <tr id="trow_{{$section->id}}">
     <td>{{$section->id}}</td>
-    <td id="name"><a href="">{{$section->name}}</a></td>
+    @php
+        // create href url and form to give values to each key
+    @endphp
+    <td id="name"><a href="{{route('files.file.sections.show', [$file, $section])}}">{{$section->name}}</a></td>
+
     <td style="text-align:center">{{$section->keyCount}}</td>
     <td>
         <button

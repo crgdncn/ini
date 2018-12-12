@@ -29,7 +29,7 @@ class SectionController extends Controller
         $sections = $file->availableSections();
         $actionRoute = route('files.file.sections.store', $file);
         $method = 'POST';
-        return view('files.sections.form', compact('file', 'sections', 'actionRoute', 'method'));
+        return view('files.sections.partials.form', compact('file', 'sections', 'actionRoute', 'method'));
     }
 
     /**
@@ -50,7 +50,7 @@ class SectionController extends Controller
             ]);
         }
 
-        return view('files.sections.tableRows', compact('file', 'sections'));
+        return view('files.sections.partials.tableRows', compact('file', 'sections'));
     }
 
     /**
@@ -59,9 +59,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(File $file, FileSection $section)
     {
-        abort(404);
+        return view('files.sections.show', compact('file', 'section'));
     }
 
     /**

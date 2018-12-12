@@ -39,7 +39,7 @@
         </thead>
         <tbody id="tbody">
         @foreach($file->sections as $section)
-            @include('files.sections.tableRow')
+            @include('files.sections.partials.tableRow')
         @endforeach
         </tbody>
     </table>
