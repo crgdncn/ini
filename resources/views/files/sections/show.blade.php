@@ -31,15 +31,15 @@
             <tr class="text-left">
                 <th width="5%">ID</th>
                 <th width="20%">Name</th>
-                <th class="text-center">Description</th>
+                <th class="text-center">Value</th>
                 <th width="10%"></th>
             </tr>
         </thead>
         <tbody id="tbody">
         @foreach($section->keys as $key)
-            @include('files.file.keys.partials.keyTableRow')
+            @include('files.keys.partials.keyTableRow')
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{ {route('ini.types.sections.keys.create', [$type, $section])} }', 'New Key')">Add Keys</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{route('files.file.sections.keys.create', [$file, $section])}}', 'Add Key')">Add Key</button>
 @endsection

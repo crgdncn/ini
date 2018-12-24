@@ -17,9 +17,9 @@
         >
         Delete
         </button>
-    <form id="delete-type-{{$file->id}}" action="{{route('files.files.destroy', $file->id)}}">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-    </form>
+        <form id="delete-type-{{$file->id}}" action="{{route('files.files.destroy', $file->id)}}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+        </form>
     </td>
 </tr>
