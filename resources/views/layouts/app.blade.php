@@ -23,8 +23,10 @@
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-header th-color">
+                        <button id="modal-dismiss-button" type="button" class="close" style="font-size: 2.5em;" data-dismiss="modal">
+                            &times;
+                        </button>
                         <h4 id="modal-header" class="modal-title">INI File Management</h4>
                     </div>
                 <div id="modal-body" class="modal-body">

@@ -1,5 +1,5 @@
 <tr id="trow_{{$key->id}}">
-    <td>{{$key->id}}</td>
+    <td class="td-id">{{$key->id}}</td>
     <td>{{$key->name}}</td>
     <td>{{$key->value}}</td>
     <td>

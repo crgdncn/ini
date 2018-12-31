@@ -1,8 +1,8 @@
 <tr id="trow_{{$type->id}}">
-    <td>{{$type->id}}</td>
+    <td class="td-id">{{$type->id}}</td>
     <td id="name"><a href="{{route('ini.types.show', $type)}}">{{$type->name}}</a></td>
     <td id="description">{{ str_limit($type->description, 200) }}</td>
-    <td style="text-align:center">{{$type->sections->count()}}</td>
+    <td class="td-count">{{$type->sections->count()}}</td>
     <td>
         <button
             class="btn btn-sm"

@@ -1,8 +1,8 @@
 <tr id="trow_{{$section->id}}">
-    <td>{{$section->id}}</td>
+    <td class="td-id">{{$section->id}}</td>
     <td id="name"><a href="{{route('files.file.sections.show', [$file, $section])}}">{{$section->name}}</a></td>
 
-    <td style="text-align:center">{{$section->keyCount}}</td>
+    <td class="td-count">{{$section->keyCount}}</td>
     <td>
         <button
             class="btn btn-sm"

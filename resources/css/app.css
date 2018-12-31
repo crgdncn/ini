@@ -18,7 +18,7 @@ body {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
 }
 
@@ -39,4 +39,41 @@ body {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+
+.breadcrumb {
+    font-size: 0.7em;
+}
+
+.th-color {
+    background-color: #0074d9;
+    color: white;
+}
+
+.td-id {
+    width: 5px;
+    text-align: center;
+}
+
+.td-name {
+    width: 150px;
+    text-align: left;
+}
+
+.td-description {
+    text-align: left;
+}
+
+.td-value {
+    text-align: center;
+}
+
+.td-count {
+    width: 30px;
+    text-align: center;
+}
+
+.td-buttons {
+     width: 200px;
+     text-align: center;
 }

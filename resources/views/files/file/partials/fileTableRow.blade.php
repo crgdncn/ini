@@ -1,5 +1,5 @@
 <tr id="trow_{{$file->id}}">
-    <td>{{$file->id}}</td>
+    <td class="td-id">{{$file->id}}</td>
     <td id="name"><a href="{{route('files.files.show', $file)}}">{{$file->file_name}}</a></td>
     <td style="text-align:center">{{$file->iniType->name}}</td>
     <td>

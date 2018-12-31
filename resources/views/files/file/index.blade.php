@@ -3,14 +3,14 @@
 @section('title', 'Ini File Management')
 
 @section('content')
-    <p>Files</p>
+    <p class="breadcrumb">Files</p>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="text-left">
-                <th width="5%">ID</th>
-                <th width="20%">File Name</th>
-                <th width="10%" style="text-align:center">File Type</th>
-                <th width="10%"></th>
+            <tr class="th-color">
+                <th class="td-id">ID</th>
+                <th class="td-name">File Name</th>
+                <th class="td-value">File Type</th>
+                <th class="td-buttons"></th>
             </tr>
         </thead>
         <tbody id="tbody">
