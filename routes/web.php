@@ -24,14 +24,15 @@ Route::prefix('ini')->name('ini.')->group(function () {
     ]);
 });
 
-
 /*
  * Create INI files
  */
 Route::prefix('files')->name('files.')->group(function () {
     Route::resources([
-        'files' => 'Files\FileController',
+        'file' => 'Files\FileController',
         'file.sections' => 'Files\SectionController',
         'file.sections.keys' => 'Files\KeyController',
     ]);
+
+    Route::get('/file/{file}/download', 'Files\FileController@download')->name('file.download');
 });

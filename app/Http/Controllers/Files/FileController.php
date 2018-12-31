@@ -125,4 +125,51 @@ class FileController extends Controller
     {
         $file->delete();
     }
+
+    // download the data as an ii file
+    public function download(File $file)
+    {
+        header('Content-Disposition: attachment; filename="' . $file->name . '"');
+        header('Cache-control: private');
+        header('Content-type: text/plain');
+
+        $out = fopen('php://output', 'w');
+        $sections = $file->exportableSections();
+
+        $none = $sections->filter(function ($section, $key) {
+            return strtolower($section->iniSection->name) == 'none';
+        })->first();
+
+        if ($none) {
+            // export key value pairs outside of a section
+            foreach ($none->fileSectionKeys as $key) {
+                $keyName = $key->iniKey->name;
+                $keyValue = $key->value;
+                $line = $keyName . '=' . $keyValue . "\n";
+                fputs($out, $line);
+            }
+            fputs($out, "\n");
+        }
+
+        $others = $sections->filter(function ($section, $key) {
+            return strtolower($section->iniSection->name) != 'none';
+        });
+
+        // export all sections with key value pairs
+        foreach ($others as $section) {
+            $line = '[' . $section->iniSection->name . "]\n";
+            fputs($out, $line);
+
+            foreach ($section->fileSectionKeys as $key) {
+                $keyName = $key->iniKey->name;
+                $keyValue = $key->value;
+                $line = $keyName . '=' . $keyValue . "\n";
+                fputs($out, $line);
+            }
+
+            fputs($out, "\n");
+        }
+
+        die(); // terminate download
+    }
 }

@@ -4,8 +4,8 @@
 
 @section('content')
      <p class="breadcrumb">
-        <a href="{{route('files.files.index')}}"> Files </a>
-        / <a href="{{route('files.files.show', $file)}}">{{$file->name}}</a>
+        <a href="{{route('files.file.index')}}"> Files </a>
+        / <a href="{{route('files.file.show', $file)}}">{{$file->name}}</a>
         / {{$section->name}}
     </p>
     <table class="table table-bordered table-striped">

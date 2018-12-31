@@ -44,6 +44,18 @@ class File extends Model
     }
 
     /**
+     * return a collection of sections with keys
+     * @return Collection
+     */
+    public function exportableSections()
+    {
+        return FileSection::select(['file_sections.*'])
+            ->where('file_sections.file_id', '=', $this->id)
+            ->with('iniSection', 'fileSectionKeys', 'fileSectionKeys.iniKey')
+            ->get();
+    }
+
+    /**
      * short cut to get file name
      * @return string
      */
