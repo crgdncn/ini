@@ -36,7 +36,7 @@ class FileController extends Controller
         $file = new File();
         $types = IniType::all();
         $method = 'POST';
-        $actionRoute = route('files.files.store');
+        $actionRoute = route('files.file.store');
         $selected = null;
 
         return view('files.file.partials.form', compact('file', 'types', 'selected', 'actionRoute', 'method'));
