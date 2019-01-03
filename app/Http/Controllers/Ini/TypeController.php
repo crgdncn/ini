@@ -116,7 +116,7 @@ class TypeController extends Controller
     public function destroy(IniType $type)
     {
         $count = File::countByType($type);
-        if ($count == 0) {
+        if ($count > 0) {
             return response()->json([
                 'error' => "<strong>Delete failed:</strong> $count files of this INI type still exist. <br>Please delete those before deleting the INI type definition.",
             ], 403);
