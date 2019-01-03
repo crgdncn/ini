@@ -48,6 +48,7 @@ function postFormModal(formId, objectId) {
         } else {
             $('#iniModal #modal-header').text('Error');
             $('#iniModal #modal-body').html('Ooops, something went wrong!');
+            $('#iniModal').modal('show');
         }
     })
 }
@@ -68,6 +69,12 @@ function postObjectDelete(formId, objectId) {
     .done(function(response) {
         $('#trow_' + objectId).remove();
     }).fail(function(response) {
-        alert('Oops, something went wrong!');
+        var errorMessage = response.responseJSON.error;
+        if (typeof errorMessage == 'undefined') {
+            errorMessage = 'Ooops, something went wrong!';
+        }
+        $('#iniModal #modal-header').text('Error');
+        $('#iniModal #modal-body').html(errorMessage);
+        $('#iniModal').modal('show');
     })
 }
