@@ -56,6 +56,16 @@ class File extends Model
     }
 
     /**
+     * Return the number of files of a given ini type
+     * @param  IniType $type
+     * @return integer
+     */
+    public static function countByType(IniType $type)
+    {
+        return File::where('ini_type_id', '=', $type->id)->count();
+    }
+
+    /**
      * short cut to get file name
      * @return string
      */

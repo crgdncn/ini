@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ini;
 use App\Models\IniType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\File;
 
 class TypeController extends Controller
 {
@@ -109,11 +110,18 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \AppModels\IniType  $type
+     * @param  \App\Models\IniType  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy(IniType $type)
     {
+        $count = File::countByType($type);
+        if ($count == 0) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> $count files of this INI type still exist. <br>Please delete those before deleting the INI type definition.",
+            ], 403);
+        }
+
         $type->delete();
     }
 }
