@@ -25,11 +25,6 @@ class File extends Model
         return $this->hasMany(FileSection::class);
     }
 
-    public function files()
-    {
-        return $this->hasMany(File::class);
-    }
-
     /**
      * List of available ini sections that have
      * not already been assigned to this file
