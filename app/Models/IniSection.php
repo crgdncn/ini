@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\IniType;
 use App\Models\IniKey;
+use App\Models\FileSection;
 
 class IniSection extends Model
 {
@@ -32,6 +33,15 @@ class IniSection extends Model
     public function iniKeys()
     {
         return $this->hasMany(IniKey::class);
+    }
+
+    /**
+     * Files sections are defined by IniSection
+     * @return [type] [description]
+     */
+    public function fileSections()
+    {
+        return $this->hasMany(FileSection::class);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\IniSection;
+use App\Models\FileSectionKey;
 
 class IniKey extends Model
 {
@@ -21,6 +22,11 @@ class IniKey extends Model
     public function iniSection()
     {
         return $this->belongsTo(IniSection::class);
+    }
+
+    public function fileSectionKeys()
+    {
+        return $this->hasMany(FileSectionKey::class);
     }
 
     /**

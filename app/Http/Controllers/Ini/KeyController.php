@@ -107,8 +107,14 @@ class KeyController extends Controller
      */
     public function destroy(IniType $type, IniSection $section, IniKey $key)
     {
-        if ($type && $section && $key) {
-            $key->delete();
+        $count = $key->fileSectionKeys()->count();
+
+        if ($count > 0) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> $count keys of this type still exist. <br>Please delete those before deleting the INI key definition.",
+            ], 403);
         }
+
+        $key->delete();
     }
 }

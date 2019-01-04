@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\IniSection;
+use App\Models\File;
 
 class IniType extends Model
 {
@@ -20,6 +21,15 @@ class IniType extends Model
     public function iniSections()
     {
         return $this->hasMany(IniSection::class);
+    }
+
+    /**
+     * one or more files of this type
+     * @return Collection
+     */
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 
     /**

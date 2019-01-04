@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\IniType;
 use App\Models\FileSection;
+use App\Models\File;
 
 class File extends Model
 {
@@ -22,6 +23,11 @@ class File extends Model
     public function fileSections()
     {
         return $this->hasMany(FileSection::class);
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 
     /**
