@@ -2,7 +2,7 @@
     <td class="td-id">{{$key->id}}</td>
     <td>{{$key->name}}</td>
     <td>{{$key->value}}</td>
-    <td>
+    <td class="td-buttons">
         <button
             class="btn btn-sm"
             type="button"

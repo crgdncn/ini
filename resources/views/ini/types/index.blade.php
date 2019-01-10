@@ -11,7 +11,7 @@
                 <th class="td-name">File Type</th>
                 <th class="text-description">Description</th>
                 <th class="td-count">#Sections</th>
-                <th class="td-buttons"></th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">

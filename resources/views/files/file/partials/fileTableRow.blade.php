@@ -1,8 +1,8 @@
 <tr id="trow_{{$file->id}}">
     <td class="td-id">{{$file->id}}</td>
-    <td id="name"><a href="{{route('files.file.show', $file)}}">{{$file->file_name}}</a></td>
-    <td style="text-align:center">{{$file->iniType->name}}</td>
-    <td>
+    <td class="td-name" id="name"><a href="{{route('files.file.show', $file)}}">{{$file->file_name}}</a></td>
+    <td class="td-description">{{$file->iniType->name}}</td>
+    <td class="td-buttons">
         <button
             class="btn btn-sm"
             type="button"

@@ -9,8 +9,8 @@
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">File Name</th>
-                <th class="td-value">File Type</th>
-                <th class="td-buttons"></th>
+                <th class="td-description">File Type</th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">

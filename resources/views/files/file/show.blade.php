@@ -27,14 +27,14 @@
             </tr>
         </tbody>
     </table>
-    <p>Sections</p>
+    <p>Sections 3</p>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">Name</th>
                 <th class="td-count""># Keys</th>
-                <th class="td-buttons""></th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">

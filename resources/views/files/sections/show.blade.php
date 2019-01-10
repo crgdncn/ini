@@ -32,7 +32,7 @@
                 <th class="td-id">ID</th>
                 <th class="td-name">Name</th>
                 <th class="td-value">Value</th>
-                <th class="td-buttons"></th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">

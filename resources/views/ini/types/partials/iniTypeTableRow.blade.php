@@ -1,9 +1,9 @@
 <tr id="trow_{{$type->id}}">
     <td class="td-id">{{$type->id}}</td>
-    <td id="name"><a href="{{route('ini.types.show', $type)}}">{{$type->name}}</a></td>
-    <td id="description">{{ str_limit($type->description, 200) }}</td>
+    <td class="td-name" id="name"><a href="{{route('ini.types.show', $type)}}">{{$type->name}}</a></td>
+    <td class="td-description" id="description">{{ str_limit($type->description, 200) }}</td>
     <td class="td-count">{{$type->sections->count()}}</td>
-    <td>
+    <td class="td-buttons">
         <button
             class="btn btn-sm"
             type="button"

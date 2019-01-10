@@ -31,7 +31,7 @@
                 <th class="td-name">Name</th>
                 <th class="td-description">Description</th>
                 <th class="td-count">#Keys</th>
-                <th class="td-buttons"></th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">
