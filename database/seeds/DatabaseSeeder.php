@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(IgbinarySeeder::class);
+        $this->call(XdebugSeeder::class);
+        $this->call(RedisSeeder::class);
     }
 }
