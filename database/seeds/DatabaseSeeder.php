@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IgbinarySeeder::class);
         $this->call(XdebugSeeder::class);
         $this->call(RedisSeeder::class);
+        $this->call(MemcachedSeeder::class);
     }
 }
