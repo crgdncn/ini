@@ -44,7 +44,7 @@ class CreateSectionsKeyTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('section_keys');
+        Schema::dropIfExists('file_section_keys');
         Schema::enableForeignkeyConstraints();
     }
 }
