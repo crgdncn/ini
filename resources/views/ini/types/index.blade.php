@@ -20,5 +20,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.create')}}', 'New INI Type')">Add New File Type</button>
+    <button id="btn-add-new-file-type" class="btn btn-primary" onClick="getFormModal('{{route('ini.types.create')}}', 'New INI Type')">Add New File Type</button>
 @endsection

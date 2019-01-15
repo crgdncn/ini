@@ -41,5 +41,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.keys.create', [$type, $section])}}', 'New Key')">Add New Key</button>
+    <button id="btn-add-new-key" class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.keys.create', [$type, $section])}}', 'New Key')">Add New Key</button>
 @endsection

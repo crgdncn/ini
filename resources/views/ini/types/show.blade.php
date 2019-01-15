@@ -40,5 +40,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
+    <button id="btn-add-new-section" class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
 @endsection

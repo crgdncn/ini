@@ -11,9 +11,9 @@
     </head>
     <body>
         <div class="sidenav">
-            <a href="{{route('home')}}">Home</a>
-            <a href="{{route('ini.types.index')}}">Define</a>
-            <a href="{{route('files.file.index')}}">Create</a>
+            <a id="nav-home" href="{{route('home')}}">Home</a>
+            <a id="nav-define" href="{{route('ini.types.index')}}">Define</a>
+            <a id="nav-create" href="{{route('files.file.index')}}">Create</a>
         </div>
         <div class="main">
             @yield('content')
