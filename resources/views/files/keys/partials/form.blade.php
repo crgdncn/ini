@@ -24,6 +24,7 @@
                 <th>Value</th>
                 <td>
                     <textarea class="form-control" name="value">{{$key->value}}</textarea>
+                    <span id="value-error" class="error-text"></span>
                 </td>
             </tr>
         </tbody>
