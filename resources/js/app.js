@@ -1,3 +1,11 @@
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+        }
+    });
+})
+
 /**
  * Open up a modal with a form inside
  * @param  string url
