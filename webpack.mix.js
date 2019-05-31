@@ -23,7 +23,7 @@ if (mix.inProduction()) {
 }
   else {
      mix.browserSync({
-         proxy: 'ini.app',
+         proxy: 'https://ini.test',
          files: [
                 './resources/views/**/*.blade.php',
             ]
