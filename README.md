@@ -13,3 +13,5 @@ The premise of this application is to manage INI files. The application is split
 
 Note:
 There is no real world application here, this is an example of how I approached creating an application in Laravel.
+
+This application contains database seeder files that set up examples of both a definition and an INI file.
