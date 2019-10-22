@@ -90,7 +90,7 @@ class FileController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('files.files.update', $file);
+        $actionRoute = route('files.file.update', $file);
         $types = IniType::all();
         $selected = $file->ini_type_id;
 
