@@ -15,6 +15,11 @@ class FileSection extends Model
         'ini_section_id',
     ];
 
+    protected $extends = [
+        'name',
+        'description',
+    ];
+
     public function file()
     {
         return $this->belongsTo(File::class);
@@ -86,5 +91,14 @@ class FileSection extends Model
     public function getNameAttribute()
     {
         return $this->iniSection->name;
+    }
+
+    /**
+     * shortcut to ini section description
+     * @return string
+     */
+    public function getDescriptionAttribute()
+    {
+        return $this->iniSection->description;
     }
 }
