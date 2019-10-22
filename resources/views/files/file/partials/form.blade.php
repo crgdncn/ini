@@ -1,4 +1,4 @@
-<div class="alert alert-danger hidden">
+<div class="alert alert-danger d-none">
     <span id="message-error" class="help-block"></span>
 </div>
 
@@ -8,7 +8,7 @@
         <tr class="text-left">
             <th>Name</th>
             <td>
-                <input id="file_name", name="file_name" size="50" value="{{$file->file_name}}">
+                <input id="file_name", name="file_name" size="40" value="{{$file->file_name}}">
                 <br>
                 <span id="file_name-error" class="error-text"></span>
             </td>

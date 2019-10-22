@@ -3,7 +3,7 @@
     <td class="td-name">
         <a id="a_{{snake_case($section->name)}}" href="{{route('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
     </td>
-    <td class="td-description" id="description">{{ str_limit($section->description, 200) }}</td>
+    <td class="td-description d-none d-md-block" id="description">{{ str_limit($section->description, 200) }}</td>
     <td class="td-count">{{$section->keys->count()}}</td>
     <td class="td-buttons">
         <button

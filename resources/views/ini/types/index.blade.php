@@ -9,7 +9,7 @@
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">File Type</th>
-                <th class="text-description">Description</th>
+                <th class="text-description d-none d-md-block">Description</th>
                 <th class="td-count">#Sections</th>
                 <th class="td-buttons">Actions</th>
             </tr>

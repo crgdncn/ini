@@ -1,4 +1,4 @@
-<div class="alert alert-danger hidden">
+<div class="alert alert-danger d-none">
     <span id="message-error" class="help-block"></span>
 </div>
 

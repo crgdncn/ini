@@ -8,7 +8,7 @@
         <tr class="text-left">
             <th>Name</th>
             <td>
-                <input id="name", name="name" size="50" value="{{$section->name}}">
+                <input id="name", name="name" size="35" value="{{$section->name}}">
                 <br>
                 <span id="name-error" class="error-text"></span>
             </td>
@@ -16,7 +16,7 @@
         <tr class="text-left">
             <th>Description</th>
             <td>
-                <textarea id="description", name="description" cols="50" rows="10">{{$section->description}}</textarea>
+                <textarea id="description", name="description" cols="35" rows="10">{{$section->description}}</textarea>
                 <br>
                 <span id="description-error" class="error-text"></span>
             </td>

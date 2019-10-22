@@ -29,7 +29,7 @@
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">Name</th>
-                <th class="td-description">Description</th>
+                <th class="td-description d-none d-md-block">Description</th>
                 <th class="td-count">#Keys</th>
                 <th class="td-buttons">Actions</th>
             </tr>
