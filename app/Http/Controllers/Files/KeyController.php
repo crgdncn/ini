@@ -78,7 +78,7 @@ class KeyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(\App\Models\File $file, \App\Models\FileSection $section, \App\models\FileSectionKey $key)
+    public function edit(File $file, FileSection $section, FileSectionKey $key)
     {
         $sectionIniKeys = $section->availableIniKeys();
         $actionRoute = route('files.file.sections.keys.update', [$file, $section, $key]);
@@ -116,6 +116,19 @@ class KeyController extends Controller
      */
     public function destroy(File $file, FileSection $section, FileSectionKey $key)
     {
+
+        if ($file->id != $section->file->id) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> file section does not belong to file."
+            ], 403);
+        }
+
+        if ($section->id != $key->fileSection->id) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> section key does not belong to file section."
+            ], 403);
+        }
+
         $key->delete();
     }
 }

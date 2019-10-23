@@ -96,6 +96,19 @@ class SectionController extends Controller
      */
     public function destroy(File $file, FileSection $section)
     {
+        if ($file->id != $section->file->id) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> file section does not belong to file."
+            ], 403);
+        }
+
+        $count = $section->fileSectionKeys()->count();
+
+        if ($count > 0) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> $count keys of this section still exist. <br>Please delete those before deleting the file section.",
+            ], 403);
+        }
         $section->delete();
     }
 }
