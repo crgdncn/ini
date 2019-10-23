@@ -26,6 +26,8 @@ if (mix.inProduction()) {
          proxy: 'https://ini.test',
          files: [
                 './resources/views/**/*.blade.php',
+                './resources/css/*.css',
+                './resources/js/*.js',
             ]
      });
   }
