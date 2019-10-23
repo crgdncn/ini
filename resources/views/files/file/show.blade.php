@@ -27,7 +27,7 @@
             </tr>
         </tbody>
     </table>
-    <p>Sections 3</p>
+    <p>Sections</p>
     <table class="table table-bordered table-striped">
         <thead>
             <tr class="th-color">
