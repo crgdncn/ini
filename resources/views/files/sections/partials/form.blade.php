@@ -6,6 +6,9 @@
     {{ csrf_field() }}{{ method_field($method) }}
     <!-- input type="hidden" name="form_id" -->
     <select name="sections[]" class="form-control" multiple>
+        @if ($sections->count() == 0)
+            <option disabled>No more available sections, see file definition.</option>
+        @endif
         @foreach($sections as $section)
             <option value="{{$section->id}}">{{$section->name}}</option>
         @endforeach
