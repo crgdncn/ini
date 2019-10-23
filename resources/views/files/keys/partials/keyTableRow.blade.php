@@ -1,7 +1,7 @@
 <tr id="trow_{{$key->id}}">
     <td class="td-id">{{$key->id}}</td>
-    <td>{{$key->name}}</td>
-    <td>{{$key->value}}</td>
+    <td class="td-name">{{$key->name}}</td>
+    <td class="td-value d-none d-md-table-cell">{{$key->value}}</td>
     <td class="td-buttons">
         <button
             class="btn btn-sm"

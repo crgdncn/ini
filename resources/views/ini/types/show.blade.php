@@ -10,15 +10,15 @@
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
-                <th class="th-color td-name">ID</th>
+                <td class="th-color td-name">ID</td>
                 <td>{{$type->id}}</td>
             </tr>
             <tr>
-                <th class="th-color td-name">Name</th>
+                <td class="th-color td-name">Name</td>
                 <td>{{$type->name}}</td>
             </tr>
             <tr>
-                <th class="th-color td-name">Description</th>
+                <td class="th-color td-name">Description</td>
                 <td>{{$type->description}}</td>
             </tr>
         </tbody>
@@ -29,7 +29,7 @@
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">Name</th>
-                <th class="td-description d-none d-md-block">Description</th>
+                <th class="td-description d-none d-md-table-cell">Description</th>
                 <th class="td-count">#Keys</th>
                 <th class="td-buttons">Actions</th>
             </tr>

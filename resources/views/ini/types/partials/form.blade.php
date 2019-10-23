@@ -18,7 +18,7 @@
         <tr class="text-left">
             <th>Description</th>
             <td>
-                <textarea id="description", name="description" cols="35" rows="10">{{$type->description}}</textarea>
+                <textarea id="description", name="description" cols="30" rows="10">{{$type->description}}</textarea>
                 <br>
                 <span id="description-error" class="rror-text"></span>
             </td>

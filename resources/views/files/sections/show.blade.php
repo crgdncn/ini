@@ -31,7 +31,7 @@
             <tr class="th-color">
                 <th class="td-id">ID</th>
                 <th class="td-name">Name</th>
-                <th class="td-value">Value</th>
+                <th class="td-value d-none d-md-table-cell">Value</th>
                 <th class="td-buttons">Actions</th>
             </tr>
         </thead>

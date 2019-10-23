@@ -10,10 +10,12 @@
         <meta id="token" name="csrf-token" content="{{csrf_token()}}">
     </head>
     <body>
-        <div class="sidenav">
-            <a id="nav-home" href="{{route('home')}}">Home</a>
-            <a id="nav-define" href="{{route('ini.types.index')}}">Define</a>
-            <a id="nav-create" href="{{route('files.file.index')}}">Create</a>
+        <div class="topnav">
+            <ul>
+                <li><a id="nav-home" href="{{route('home')}}">Home</a></li>
+                <li><a id="nav-define" href="{{route('ini.types.index')}}">Define</a></li>
+                <li><a id="nav-create" href="{{route('files.file.index')}}">Create</a></li>
+            </ul>
         </div>
         <div class="main">
             @yield('content')
@@ -30,7 +32,7 @@
                         </div>
 
                         <div class="ml-auto">
-                        <button id="modal-dismiss-button" type="button" class="close" style="font-size: 2.5em;" data-dismiss="modal">
+                        <button id="modal-dismiss-button" type="button" class="close" style="font-size: 1.5em;" data-dismiss="modal">
                             &times;
                         </button>
                         </div>

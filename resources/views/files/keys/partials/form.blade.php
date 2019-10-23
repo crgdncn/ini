@@ -13,6 +13,9 @@
                     @else
                     {{-- new key --}}
                     <select class="form-control", name="ini_key_id">
+                        @if ($sectionIniKeys->count() == 0)
+                            <option disabled>All keys are in use, see file definition.</option>
+                        @endif
                         @foreach ($sectionIniKeys as $iniKey)
                             <option value="{{$iniKey->id}}">{{$iniKey->name}}</option>
                         @endforeach
@@ -29,12 +32,13 @@
             </tr>
         </tbody>
     </table>
-</form>
 
-<button
+    <button
         id="submit"
         type="button"
         class="btn btn-primary"
         onClick="postFormModal('{{getObjectBaseClassName($section)}}', {{$key->id}})"
         >Save
     </button>
+    <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
