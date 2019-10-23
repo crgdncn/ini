@@ -89,12 +89,19 @@ table {
 }
 
 td > textarea {
-    max-width: 70%;
+    max-width: 80%;
     border: 1px solid grey;
 }
 
 td > input {
-    max-width: 70%;
+    max-width: 80%;
     border: 1px solid grey;
 }
 
+td > select {
+    max-width: 80%;
+}
+
+.btn-sm {
+    border: 1px solid #007bff;
+}

@@ -12,10 +12,11 @@
                     <strong>{{$key->name}}</strong>
                     @else
                     {{-- new key --}}
+                    @if ($sectionIniKeys->count() == 0)
+                        <p>All keys are in use, see file definition.</p>
+                    @endif
                     <select class="form-control", name="ini_key_id">
-                        @if ($sectionIniKeys->count() == 0)
-                            <option disabled>All keys are in use, see file definition.</option>
-                        @endif
+
                         @foreach ($sectionIniKeys as $iniKey)
                             <option value="{{$iniKey->id}}">{{$iniKey->name}}</option>
                         @endforeach
@@ -36,9 +37,9 @@
     <button
         id="submit"
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary btn-sm"
         onClick="postFormModal('{{getObjectBaseClassName($section)}}', {{$key->id}})"
         >Save
     </button>
-    <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="close"  type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
 </form>

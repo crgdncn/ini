@@ -28,10 +28,10 @@
     <button
         id="submit"
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary btn-sm"
         onClick="postFormModal('{{getObjectBaseClassName($type)}}', {{$type->id}})"
         >
     Save
     </button>
-    <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="close"  type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
 </form>
