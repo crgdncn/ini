@@ -123,10 +123,22 @@ class FileController extends Controller
      */
     public function destroy(File $file)
     {
+        $count = $file->fileSections()->count();
+
+        if ($count > 0) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> $count sections of this file still exist. <br>Please delete those before deleting this file.",
+            ], 403);
+        }
+
         $file->delete();
     }
 
-    // download the data as an ii file
+    /**
+     * Downloads the given file as an INI.
+     *
+     * @param \App\Models\File  $file   The file
+     */
     public function download(File $file)
     {
         header('Content-Disposition: attachment; filename="' . $file->name . '"');
@@ -169,6 +181,8 @@ class FileController extends Controller
 
             fputs($out, "\n");
         }
+
+        fclose($out);
 
         die(); // terminate download
     }
