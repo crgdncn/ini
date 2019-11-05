@@ -8,7 +8,7 @@
         <tr class="text-left">
             <th>Name</th>
             <td>
-                <input id="name", name="name" size="50" value="{{$key->name}}">
+                <input id="name", name="name" size="35" value="{{$key->name}}">
                 <br>
                 <span id="name-error" class="error-text"></span>
             </td>
@@ -16,7 +16,7 @@
         <tr class="text-left">
             <th>Description</th>
             <td>
-                <textarea id="description", name="description" cols="50" rows="10">{{$key->description}}</textarea>
+                <textarea id="description", name="description" cols="35" rows="10">{{$key->description}}</textarea>
                 <br>
                 <span id="description-error" class="error-text"></span>
             </td>
@@ -26,10 +26,10 @@
     <button
         id="submit"
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary btn-sm"
         onClick="postFormModal('{{getObjectBaseClassName($key)}}', {{$key->id}})"
         >
     Save
     </button>
-    <button id="close"  type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button id="close"  type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
 </form>

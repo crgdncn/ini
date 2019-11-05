@@ -1,11 +1,11 @@
 <tr id="trow_{{$section->id}}">
-    <td>{{$section->id}}</td>
-    <td id="name">
-        <a href="{{route('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
+    <td class="td-id">{{$section->id}}</td>
+    <td class="td-name">
+        <a id="a_{{snake_case($section->name)}}" href="{{route('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
     </td>
-    <td id="description">{{ str_limit($section->description, 200) }}</td>
-    <td style="text-align:center">{{$section->keys->count()}}</td>
-    <td>
+    <td class="td-description d-none d-md-table-cell" id="description">{{ str_limit($section->description, 200) }}</td>
+    <td class="td-count">{{$section->keys->count()}}</td>
+    <td class="td-buttons">
         <button
             class="btn btn-sm"
             type="button"

@@ -3,23 +3,23 @@
 @section('title', 'File Section')
 
 @section('content')
-     <p>
-        <a href="{{route('files.files.index')}}"> Files </a>
-        / <a href="{{route('files.files.show', $file)}}">{{$file->name}}</a>
+     <p class="breadcrumb">
+        <a href="{{route('files.file.index')}}"> Files </a>
+        / <a href="{{route('files.file.show', $file)}}">{{$file->name}}</a>
         / {{$section->name}}
     </p>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
-                <th width="5%">ID</th>
+                <th class="td-name th-color">ID</th>
                 <td>{{$section->id}}</td>
             </tr>
             <tr>
-                <th width="20%">Name</th>
+                <th class="td-name th-color">Name</th>
                 <td>{{$section->name}}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th class="td-name th-color">Description</th>
                 <td>{{$section->description}}</td>
             </tr>
         </tbody>
@@ -28,18 +28,18 @@
     <p>Keys</p>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="text-left">
-                <th width="5%">ID</th>
-                <th width="20%">Name</th>
-                <th class="text-center">Description</th>
-                <th width="10%"></th>
+            <tr class="th-color">
+                <th class="td-id">ID</th>
+                <th class="td-name">Name</th>
+                <th class="td-value d-none d-md-table-cell">Value</th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">
         @foreach($section->keys as $key)
-            @include('files.file.keys.partials.keyTableRow')
+            @include('files.keys.partials.keyTableRow')
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{ {route('ini.types.sections.keys.create', [$type, $section])} }', 'New Key')">Add Keys</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{route('files.file.sections.keys.create', [$file, $section])}}', 'Add Key')">Add Key</button>
 @endsection

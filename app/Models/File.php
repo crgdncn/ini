@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\IniType;
 use App\Models\FileSection;
+use App\Models\File;
 
 class File extends Model
 {
@@ -41,6 +42,28 @@ class File extends Model
             })
             ->orderBy('ini_sections.name')
             ->get();
+    }
+
+    /**
+     * return a collection of sections with keys
+     * @return Collection
+     */
+    public function exportableSections()
+    {
+        return FileSection::select(['file_sections.*'])
+            ->where('file_sections.file_id', '=', $this->id)
+            ->with('iniSection', 'fileSectionKeys', 'fileSectionKeys.iniKey')
+            ->get();
+    }
+
+    /**
+     * Return the number of files of a given ini type
+     * @param  IniType $type
+     * @return integer
+     */
+    public static function countByType(IniType $type)
+    {
+        return File::where('ini_type_id', '=', $type->id)->count();
     }
 
     /**

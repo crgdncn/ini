@@ -3,14 +3,14 @@
 @section('title', 'Ini File Management')
 
 @section('content')
-    <p>Files</p>
+    <p class="breadcrumb">Files</p>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="text-left">
-                <th width="5%">ID</th>
-                <th width="20%">File Name</th>
-                <th width="10%" style="text-align:center">File Type</th>
-                <th width="10%"></th>
+            <tr class="th-color">
+                <th class="td-id">ID</th>
+                <th class="td-name">File Name</th>
+                <th class="d-none d-md-table-cell td-description">File Type</th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -19,5 +19,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('files.files.create')}}', 'New File')">Create New File</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{route('files.file.create')}}', 'New File')">Create New File</button>
 @endsection

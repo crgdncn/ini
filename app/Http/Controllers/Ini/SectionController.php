@@ -122,8 +122,14 @@ class SectionController extends Controller
      */
     public function destroy(IniType $type, IniSection $section)
     {
-        if ($type && $section) {
-            $section->delete();
+        $count = $section->fileSections()->count();
+
+        if ($count > 0) {
+            return response()->json([
+                'error' => "<strong>Delete failed:</strong> $count sections of this type still exist. <br>Please delete those before deleting the INI section definition.",
+            ], 403);
         }
+
+        $section->delete();
     }
 }

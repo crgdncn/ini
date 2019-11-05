@@ -3,22 +3,22 @@
 @section('title', 'File Type')
 
 @section('content')
-    <p>
+    <p class="breadcrumb">
         <a href="{{route('ini.types.index')}}"> INI File Types </a>
         / {{$type->name}}
     </p>
     <table class="table table-bordered table-striped">
         <tbody>
             <tr>
-                <th width="5%">ID</th>
+                <td class="th-color td-name">ID</td>
                 <td>{{$type->id}}</td>
             </tr>
             <tr>
-                <th width="20%">Name</th>
+                <td class="th-color td-name">Name</td>
                 <td>{{$type->name}}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <td class="th-color td-name">Description</td>
                 <td>{{$type->description}}</td>
             </tr>
         </tbody>
@@ -26,12 +26,12 @@
     <p>Sections</p>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="text-left">
-                <th width="5%">ID</th>
-                <th width="20%">Name</th>
-                <th class="text-center">Description</th>
-                <th width="10%" style="text-align:center"># Keys</th>
-                <th width="10%"></th>
+            <tr class="th-color">
+                <th class="td-id">ID</th>
+                <th class="td-name">Name</th>
+                <th class="td-description d-none d-md-table-cell">Description</th>
+                <th class="td-count">#Keys</th>
+                <th class="td-buttons">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody">
@@ -40,5 +40,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
+    <button id="btn-add-new-section" class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
 @endsection

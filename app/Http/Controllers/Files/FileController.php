@@ -36,7 +36,7 @@ class FileController extends Controller
         $file = new File();
         $types = IniType::all();
         $method = 'POST';
-        $actionRoute = route('files.files.store');
+        $actionRoute = route('files.file.store');
         $selected = null;
 
         return view('files.file.partials.form', compact('file', 'types', 'selected', 'actionRoute', 'method'));
@@ -90,7 +90,7 @@ class FileController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('files.files.update', $file);
+        $actionRoute = route('files.file.update', $file);
         $types = IniType::all();
         $selected = $file->ini_type_id;
 
@@ -124,5 +124,52 @@ class FileController extends Controller
     public function destroy(File $file)
     {
         $file->delete();
+    }
+
+    // download the data as an ii file
+    public function download(File $file)
+    {
+        header('Content-Disposition: attachment; filename="' . $file->name . '"');
+        header('Cache-control: private');
+        header('Content-type: text/plain');
+
+        $out = fopen('php://output', 'w');
+        $sections = $file->exportableSections();
+
+        $none = $sections->filter(function ($section, $key) {
+            return strtolower($section->iniSection->name) == 'none';
+        })->first();
+
+        if ($none) {
+            // export key value pairs outside of a section
+            foreach ($none->fileSectionKeys as $key) {
+                $keyName = $key->iniKey->name;
+                $keyValue = $key->value;
+                $line = $keyName . '=' . $keyValue . "\n";
+                fputs($out, $line);
+            }
+            fputs($out, "\n");
+        }
+
+        $others = $sections->filter(function ($section, $key) {
+            return strtolower($section->iniSection->name) != 'none';
+        });
+
+        // export all sections with key value pairs
+        foreach ($others as $section) {
+            $line = '[' . $section->iniSection->name . "]\n";
+            fputs($out, $line);
+
+            foreach ($section->fileSectionKeys as $key) {
+                $keyName = $key->iniKey->name;
+                $keyValue = $key->value;
+                $line = $keyName . '=' . $keyValue . "\n";
+                fputs($out, $line);
+            }
+
+            fputs($out, "\n");
+        }
+
+        die(); // terminate download
     }
 }

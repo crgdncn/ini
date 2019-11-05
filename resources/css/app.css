@@ -2,41 +2,106 @@ body {
         font-family: "Lato", sans-serif;
     }
 
-.sidenav {
-    height: 100%;
-    width: 160px;
+.topnav {
+    height: 60px;
+    width: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
-.sidenav a {
+.topnav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: white;
     display: block;
 }
 
-.sidenav a:hover {
+.topnav a:hover {
     color: #f1f1f1;
 }
 
+.topnav ul > li {
+    display: inline-block;
+}
+
 .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
+    margin-left: 10px;
+    margin-right: 10px;
     font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
+    padding: 100px 0px;
+}
+
+.modal-header {
+    height: 40px;
+    font-size: 20px;
+    padding-top: 3px;
 }
 
 .error-text {
     color: red;
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+.breadcrumb {
+    font-size: 0.7em;
+}
+
+table {
+    max-width: 100%;
+}
+
+.th-color {
+    background-color: #007bff;
+    color: white;
+}
+
+.td-id {
+    width: 5px;
+    text-align: center;
+}
+
+.td-name {
+    max-width: 30%;
+    text-align: left;
+}
+
+.td-description {
+    text-align: left;
+}
+
+.td-value {
+    text-align: center;
+}
+
+.td-count {
+    width: 25px;
+    text-align: center;
+}
+
+.td-buttons {
+     width: 200px;
+     text-align: center;
+}
+
+td > textarea {
+    max-width: 80%;
+    border: 1px solid grey;
+}
+
+td > input {
+    max-width: 80%;
+    border: 1px solid grey;
+}
+
+td > select {
+    max-width: 80%;
+}
+
+.btn-sm {
+    border: 1px solid #007bff;
 }

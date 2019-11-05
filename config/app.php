@@ -178,6 +178,8 @@ return [
         // unique across multiple columns
         Felixkiss\UniqueWithValidator\ServiceProvider::class,
 
+        // Dusk scrollToElement macro
+        App\Providers\DuskServiceProvider::class,
     ],
 
     /*
