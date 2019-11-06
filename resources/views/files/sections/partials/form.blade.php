@@ -1,9 +1,7 @@
 <div class="alert alert-danger d-none">
     <span id="message-error" class="help-block"></span>
+    <br>
 </div>
-
-{{$actionRoute}}
-<br>
 <form id="{{getObjectBaseClassName($file)}}" action="{{$actionRoute}}">
     {{ csrf_field() }}{{ method_field($method) }}
     @if ($sections->count() == 0)
