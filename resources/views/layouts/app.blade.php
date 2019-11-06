@@ -8,10 +8,11 @@
     </head>
     <body>
         <div class="topnav">
+
             <ul>
-                <li><a id="nav-home" href="{{relativeRoute('home')}}">Home</a></li>
-                <li><a id="nav-define" href="{{relativeRoute('ini.types.index')}}">Define</a></li>
-                <li><a id="nav-create" href="{{relativeRoute('files.file.index')}}">Create</a></li>
+                <li><a id="nav-home"   class="{{ ($urlSegment == '' )     ? 'nav-active':''}}" href="{{relativeRoute('home')}}">Home</a></li>
+                <li><a id="nav-define" class="{{ ($urlSegment == 'ini')   ? 'nav-active':''}}" href="{{relativeRoute('ini.types.index')}}">Define</a></li>
+                <li><a id="nav-create" class="{{( $urlSegment == 'files') ? 'nav-active':''}}" href="{{relativeRoute('files.file.index')}}">Create</a></li>
             </ul>
         </div>
         <div class="main">
