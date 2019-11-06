@@ -10,7 +10,7 @@
                 <th class="td-id">ID</th>
                 <th class="td-name">File Type</th>
                 <th class="td-description d-none d-md-table-cell">Description</th>
-                <th class="td-count">#Sections</th>
+                <th class="td-count d-none d-md-table-cell">#Sections</th>
                 <th class="td-buttons">Actions</th>
             </tr>
         </thead>

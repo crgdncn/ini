@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', "HomeController@index")->name('home');
+Route::get('/', "Controller@home")->name('home');
 
 /*
  * Define INI types, sections and keys

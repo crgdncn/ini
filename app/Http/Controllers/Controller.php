@@ -15,4 +15,9 @@ class Controller extends BaseController
     {
         view()->share('urlSegment', \Request::segment(1));
     }
+
+    public function home()
+    {
+        return view('welcome');
+    }
 }

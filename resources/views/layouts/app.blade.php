@@ -8,7 +8,9 @@
     </head>
     <body>
         <div class="topnav">
-
+            @php
+                $urlSegment = $urlSecment ?? '';    // for 404 etc.
+            @endphp
             <ul>
                 <li><a id="nav-home"   class="{{ ($urlSegment == '' )     ? 'nav-active':''}}" href="{{relativeRoute('home')}}">Home</a></li>
                 <li><a id="nav-define" class="{{ ($urlSegment == 'ini')   ? 'nav-active':''}}" href="{{relativeRoute('ini.types.index')}}">Define</a></li>
