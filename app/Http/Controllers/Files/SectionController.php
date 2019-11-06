@@ -28,9 +28,6 @@ class SectionController extends Controller
     {
         $sections = $file->availableSections();
         $actionRoute = relativeRoute('files.file.sections.store', $file);
-
-        \Log::info($actionRoute);
-
         $method = 'POST';
         return view('files.sections.partials.form', compact('file', 'sections', 'actionRoute', 'method'));
     }
