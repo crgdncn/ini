@@ -27,7 +27,10 @@ class SectionController extends Controller
     public function create(File $file)
     {
         $sections = $file->availableSections();
-        $actionRoute = route('files.file.sections.store', $file);
+        $actionRoute = relativeRoute('files.file.sections.store', $file);
+
+        \Log::info($actionRoute);
+
         $method = 'POST';
         return view('files.sections.partials.form', compact('file', 'sections', 'actionRoute', 'method'));
     }

@@ -38,7 +38,7 @@ class KeyController extends Controller
     {
         $key = new IniKey();
         $method = 'POST';
-        $actionRoute = route('ini.types.sections.keys.store', [$type, $section]);
+        $actionRoute = relativeRoute('ini.types.sections.keys.store', [$type, $section]);
         return view('ini.keys.partials.form', compact('key', 'section', 'type', 'actionRoute', 'method'));
     }
 
@@ -77,7 +77,7 @@ class KeyController extends Controller
     public function edit(IniType $type, IniSection $section, IniKey $key)
     {
         $method = 'PUT';
-        $actionRoute = route('ini.types.sections.keys.update', [$type, $section, $key]);
+        $actionRoute = relativeRoute('ini.types.sections.keys.update', [$type, $section, $key]);
         return view('ini.keys.partials.form', compact('key', 'section', 'type', 'actionRoute', 'method'));
     }
 

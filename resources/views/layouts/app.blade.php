@@ -1,10 +1,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
-        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
         <link rel="stylesheet" href="{{mix('/css/app.css')}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta id="token" name="csrf-token" content="{{csrf_token()}}">
@@ -12,9 +9,9 @@
     <body>
         <div class="topnav">
             <ul>
-                <li><a id="nav-home" href="{{route('home')}}">Home</a></li>
-                <li><a id="nav-define" href="{{route('ini.types.index')}}">Define</a></li>
-                <li><a id="nav-create" href="{{route('files.file.index')}}">Create</a></li>
+                <li><a id="nav-home" href="{{relativeRoute('home')}}">Home</a></li>
+                <li><a id="nav-define" href="{{relativeRoute('ini.types.index')}}">Define</a></li>
+                <li><a id="nav-create" href="{{relativeRoute('files.file.index')}}">Create</a></li>
             </ul>
         </div>
         <div class="main">
@@ -26,36 +23,28 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header th-color">
-
                         <div class="mr-auto">
-                        <h4 id="modal-header" class="modal-title">INI File Management</h4>
+                            <h4 id="modal-header" class="modal-title">INI File Management</h4>
                         </div>
-
                         <div class="ml-auto">
-                        <button id="modal-dismiss-button" type="button" class="close" style="font-size: 1.5em;" data-dismiss="modal">
-                            &times;
-                        </button>
+                            <button id="modal-dismiss-button" type="button" class="close" style="font-size: 1.5em;" data-dismiss="modal">
+                                &times;
+                            </button>
                         </div>
                     </div>
-                <div id="modal-body" class="modal-body">
-                    <p>INI Modal Body</p>
+                    <div id="modal-body" class="modal-body">
+                        <p>INI Modal Body</p>
+                    </div>
                 </div>
-                <!-- div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div -->
-              </div>
             </div>
         </div>
         {{-- End Modal --}}
-        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 
-
-            <script
-                src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous">
-            </script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 

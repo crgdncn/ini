@@ -43,7 +43,7 @@ class SectionController extends Controller
 
         $section = new IniSection();
         $method = 'POST';
-        $actionRoute = route('ini.types.sections.store', $type);
+        $actionRoute = relativeRoute('ini.types.sections.store', $type);
 
         return view('ini.sections.partials.form', compact('type', 'section', 'actionRoute', 'method'));
     }
@@ -94,7 +94,7 @@ class SectionController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('ini.types.sections.update', [$type, $section]);
+        $actionRoute = relativeRoute('ini.types.sections.update', [$type, $section]);
 
         return view('ini.sections.partials.form', compact('type', 'section', 'actionRoute', 'method'));
     }

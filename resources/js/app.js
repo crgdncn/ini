@@ -35,7 +35,6 @@ function postFormModal(formId, objectId) {
     var form = $(formSelector);
     var url = form.attr('action');
     var data = form.serialize();
-
     var jqxhr = $.post(url, data)
     .done(function(response) {
         // if creating, objectId will not be defined

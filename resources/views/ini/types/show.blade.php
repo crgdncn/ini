@@ -4,7 +4,7 @@
 
 @section('content')
     <p class="breadcrumb">
-        <a href="{{route('ini.types.index')}}"> INI File Types </a>
+        <a href="{{relativeRoute('ini.types.index')}}"> INI File Types </a>
         / {{$type->name}}
     </p>
     <table class="table table-bordered table-striped">
@@ -40,5 +40,5 @@
         @endforeach
         </tbody>
     </table>
-    <button id="btn-add-new-section" class="btn btn-primary" onClick="getFormModal('{{route('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
+    <button id="btn-add-new-section" class="btn btn-primary" onClick="getFormModal('{{relativeRoute('ini.types.sections.create', $type)}}', 'New Section')">Add New Section</button>
 @endsection

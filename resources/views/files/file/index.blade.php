@@ -19,5 +19,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('files.file.create')}}', 'New File')">Create New File</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{relativeRoute('files.file.create')}}', 'New File')">Create New File</button>
 @endsection

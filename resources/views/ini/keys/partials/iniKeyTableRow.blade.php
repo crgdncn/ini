@@ -6,7 +6,7 @@
         <button
             class="btn btn-sm"
             type="button"
-            onClick="getFormModal('{{route('ini.types.sections.keys.edit', [$type, $section, $key])}}', 'Edit Key')"
+            onClick="getFormModal('{{relativeRoute('ini.types.sections.keys.edit', [$type, $section, $key])}}', 'Edit Key')"
         >
         Edit
         </button>
@@ -17,7 +17,7 @@
         >
         Delete
         </button>
-    <form id="delete-key-{{$key->id}}" action="{{route('ini.types.sections.keys.destroy', [$type, $section, $key])}}">
+    <form id="delete-key-{{$key->id}}" action="{{relativeRoute('ini.types.sections.keys.destroy', [$type, $section, $key])}}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
     </form>

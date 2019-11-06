@@ -4,8 +4,8 @@
 
 @section('content')
      <p class="breadcrumb">
-        <a href="{{route('files.file.index')}}"> Files </a>
-        / <a href="{{route('files.file.show', $file)}}">{{$file->name}}</a>
+        <a href="{{relativeRoute('files.file.index')}}"> Files </a>
+        / <a href="{{relativeRoute('files.file.show', $file)}}">{{$file->name}}</a>
         / {{$section->name}}
     </p>
     <table class="table table-bordered table-striped">
@@ -41,5 +41,5 @@
         @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary" onClick="getFormModal('{{route('files.file.sections.keys.create', [$file, $section])}}', 'Add Key')">Add Key</button>
+    <button class="btn btn-primary" onClick="getFormModal('{{relativeRoute('files.file.sections.keys.create', [$file, $section])}}', 'Add Key')">Add Key</button>
 @endsection

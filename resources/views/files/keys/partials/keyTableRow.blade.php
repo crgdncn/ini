@@ -6,7 +6,7 @@
         <button
             class="btn btn-sm"
             type="button"
-            onClick="getFormModal('{{route('files.file.sections.keys.edit', [$file, $section, $key])}}', 'Edit')"
+            onClick="getFormModal('{{relativeRoute('files.file.sections.keys.edit', [$file, $section, $key])}}', 'Edit')"
         >
         Edit
         </button>
@@ -17,7 +17,7 @@
         >
         Delete
         </button>
-        <form id="delete-type-{{$key->id}}" action="{{route('files.file.sections.keys.destroy', [$file, $section, $key])}}">
+        <form id="delete-type-{{$key->id}}" action="{{relativeRoute('files.file.sections.keys.destroy', [$file, $section, $key])}}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
     </form>

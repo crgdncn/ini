@@ -33,7 +33,7 @@ class TypeController extends Controller
 
         $type = new IniType();
         $method = 'POST';
-        $actionRoute = route('ini.types.store');
+        $actionRoute = relativeRoute('ini.types.store');
 
         return view('ini.types.partials.form', compact('type', 'actionRoute', 'method'));
     }
@@ -84,7 +84,7 @@ class TypeController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('ini.types.update', $type->id);
+        $actionRoute = relativeRoute('ini.types.update', $type->id);
 
         return view('ini.types.partials.form', compact('type', 'actionRoute', 'method'));
     }

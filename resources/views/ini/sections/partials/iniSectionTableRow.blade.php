@@ -1,7 +1,7 @@
 <tr id="trow_{{$section->id}}">
     <td class="td-id">{{$section->id}}</td>
     <td class="td-name">
-        <a id="a_{{snake_case($section->name)}}" href="{{route('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
+        <a id="a_{{snake_case($section->name)}}" href="{{relativeRoute('ini.types.sections.show', [$type, $section])}}">{{$section->name}}</a>
     </td>
     <td class="td-description d-none d-md-table-cell" id="description">{{ str_limit($section->description, 200) }}</td>
     <td class="td-count">{{$section->keys->count()}}</td>
@@ -9,7 +9,7 @@
         <button
             class="btn btn-sm"
             type="button"
-            onClick="getFormModal('{{route('ini.types.sections.edit', [$type, $section])}}', 'Edit Section')"
+            onClick="getFormModal('{{relativeRoute('ini.types.sections.edit', [$type, $section])}}', 'Edit Section')"
         >
         Edit
         </button>
@@ -22,7 +22,7 @@
         </button>
         <form
             id="delete-section-{{$section->id}}"
-            action="{{route('ini.types.sections.destroy', [$type, $section])}}">
+            action="{{relativeRoute('ini.types.sections.destroy', [$type, $section])}}">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
         </form>

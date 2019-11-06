@@ -32,7 +32,7 @@ class KeyController extends Controller
     {
         $key = new FileSectionKey();
         $sectionIniKeys = $section->availableIniKeys();
-        $actionRoute = route('files.file.sections.keys.store', [$file, $section]);
+        $actionRoute = relativeRoute('files.file.sections.keys.store', [$file, $section]);
         $method = 'POST';
         return view('files.keys.partials.form', compact('file', 'section', 'key', 'sectionIniKeys', 'actionRoute', 'method'));
     }
@@ -81,7 +81,7 @@ class KeyController extends Controller
     public function edit(File $file, FileSection $section, FileSectionKey $key)
     {
         $sectionIniKeys = $section->availableIniKeys();
-        $actionRoute = route('files.file.sections.keys.update', [$file, $section, $key]);
+        $actionRoute = relativeRoute('files.file.sections.keys.update', [$file, $section, $key]);
         $method = 'PUT';
         return view('files.keys.partials.form', compact('file', 'section', 'key', 'sectionIniKeys', 'actionRoute', 'method'));
     }

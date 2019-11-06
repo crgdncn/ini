@@ -36,7 +36,7 @@ class FileController extends Controller
         $file = new File();
         $types = IniType::all();
         $method = 'POST';
-        $actionRoute = route('files.file.store');
+        $actionRoute = relativeRoute('files.file.store');
         $selected = null;
 
         return view('files.file.partials.form', compact('file', 'types', 'selected', 'actionRoute', 'method'));
@@ -90,7 +90,7 @@ class FileController extends Controller
         }
 
         $method = 'PUT';
-        $actionRoute = route('files.file.update', $file);
+        $actionRoute = relativeRoute('files.file.update', $file);
         $types = IniType::all();
         $selected = $file->ini_type_id;
 
