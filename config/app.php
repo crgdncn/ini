@@ -175,8 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // unique across multiple columns
-        Felixkiss\UniqueWithValidator\ServiceProvider::class,
+        // // unique across multiple columns
+        // Felixkiss\UniqueWithValidator\ServiceProvider::class,
 
         // Dusk scrollToElement macro
         App\Providers\DuskServiceProvider::class,

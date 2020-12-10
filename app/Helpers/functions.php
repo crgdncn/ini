@@ -24,3 +24,25 @@ function relativeRoute($name, $parameters = [])
     $absolute = false;
     return route($name, $parameters, $absolute);
 }
+
+/**
+ * snake case a string
+ *
+ * @param string $s
+ * @return string
+ */
+function snake_case($s)
+{
+    return \Illuminate\Support\Str::snake($s);
+}
+
+/**
+ * limit a string
+ *
+ * @param string $s
+ * @return string
+ */
+function str_limit($s, $size = 500)
+{
+    return \Illuminate\Support\Str::limit($s, $size);
+}
